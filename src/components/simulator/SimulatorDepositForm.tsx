@@ -7,7 +7,7 @@ const SimulatorDepositForm: React.FC = () => {
 
   useEffect(() => {
     calculateDeposit();
-  }, [principal, years]);
+  }, [principal, years, calculateDeposit]);
 
   return (
     <>

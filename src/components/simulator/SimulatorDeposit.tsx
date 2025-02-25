@@ -1,6 +1,6 @@
 import { Card } from "antd";
-import SimulatorDepositForm from "./SimulatorDepositForm";
 import SimulatorDisplay from "./SimulatorDisplay";
+import SimulatorDepositForm from "./SimulatorDepositForm";
 
 const SimulatorDeposit: React.FC = () => {
   return (
