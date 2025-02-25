@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import { MdInstallMobile } from "react-icons/md";
 import { PiHandDepositBold } from "react-icons/pi";
 import { TbCreditCardPay, TbPigMoney } from "react-icons/tb";
 
@@ -20,19 +21,24 @@ const ProductMenu: React.FC = () => {
       icon: <TbCreditCardPay size={50} className="text-primary" />,
       tagline: "Menabung Lebih Mudah dan Aman, Masa Depan Lebih Cerah",
     },
+    {
+      name: "BW Digital",
+      icon: <MdInstallMobile size={50} className="text-primary" />,
+      tagline: "Layanan Digital Bank Wonosobo",
+    },
   ];
   return (
-    <section className="w-full py-20 bg-blue-50/70">
+    <section className="w-full pt-20 pb-10 bg-gradient-to-b from-blue-50 to-white ">
       <div className="mx-auto container">
         <h2 className="text-black font-bold text-center text-lg lg:text-3xl ">
           Produk & Layanan Kami
         </h2>
-        <div className="flex flex-col gap-y-8 lg:flex-row items-center gap-x-20 justify-between p-4 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-5 items-center gap-x-10 justify-center p-4 mt-8">
           {products.map((product) => (
             <Link
               key={product.name}
               href={`/products/${product.name.toLowerCase()}`}
-              className="bg-white p-8 rounded-3xl cursor-pointer border border-black/5 hover:-translate-y-4 hover:shadow-xl shadow-sm"
+              className="bg-white p-8 rounded-3xl cursor-pointer border border-black/5 hover:-translate-y-4 hover:shadow-xl shadow-sm min-w-[300px] min-h-[350px]"
             >
               <div className="bg-secondary/15 p-8 inline-block rounded-[30px]">
                 {product.icon}
