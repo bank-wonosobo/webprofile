@@ -2,7 +2,7 @@ import SimulatorDeposit from "./SimulatorDeposit";
 
 const SimulatorList: React.FC = () => {
   return (
-    <section className="w-full py-20 bg-blue-50/50">
+    <section className="w-full py-20 bg-[#f0f5f8]">
       <div className="mx-auto container">
         <h2 className="text-black font-bold text-center text-lg lg:text-3xl ">
           Simulasi Kredit & Depoito

@@ -15,7 +15,8 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       console.log(window.scrollY);
-      if (window.scrollY > 50) {
+
+      if (window.scrollY > 5) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -28,10 +29,12 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`p-3 w-full ${
-        isFixed ? "shadow-lg bg-opacity-100" : "bg-opacity-100"
-      } fixed z-[100] bg-white  transition-all  duration-1000 ${
-        isOpen ? "fixed min-h-screen bg-primary" : ""
+      className={`p-3 fixed w-full ${
+        isFixed
+          ? "shadow-sm border-b bg-opacity-80 backdrop-blur-sm"
+          : "bg-opacity-100"
+      } z-[100] bg-white transition-all duration-1000 ${
+        isOpen ? " min-h-screen" : ""
       }`}
     >
       <div

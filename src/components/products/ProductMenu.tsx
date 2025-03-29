@@ -28,17 +28,17 @@ const ProductMenu: React.FC = () => {
     },
   ];
   return (
-    <section className="w-full pt-20 pb-10 bg-gradient-to-b from-blue-50 to-white ">
+    <section className="w-full pt-20 pb-10 bg-[#f0f5f8] ">
       <div className="mx-auto container">
         <h2 className="text-black font-bold text-center text-lg lg:text-3xl ">
           Produk & Layanan Kami
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-5 items-center gap-x-10 justify-center p-4 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-y-5 gap-x-10 p-4 mt-8">
           {products.map((product) => (
             <Link
               key={product.name}
               href={`/products/${product.name.toLowerCase()}`}
-              className="bg-white p-8 rounded-3xl cursor-pointer border border-black/5 hover:-translate-y-4 hover:shadow-xl shadow-sm min-w-[300px] min-h-[350px]"
+              className="bg-white p-7 mx-auto rounded-3xl cursor-pointer border border-black/5 hover:-translate-y-4 hover:shadow-xl transition-all shadow-sm min-w-[300px] max-w-[300px] "
             >
               <div className="bg-secondary/15 p-8 inline-block rounded-[30px]">
                 {product.icon}
