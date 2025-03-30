@@ -2,12 +2,12 @@ import AboutList from "./AboutList";
 
 const About = () => {
   return (
-    <section className="w-full py-20 bg-white">
+    <section className="w-full py-10 bg-[#f0f5f8]  bg-[url('/bg-hero-white.png')]">
       <div className="mx-auto container">
-        <h2 className="text-black font-bold text-center text-lg lg:text-3xl ">
+        <h2 className="text-black font-bold text-center text-2xl lg:text-3xl ">
           Kenapa Memilih Bank Wonosobo
         </h2>
-        <div className="flex w-full flex-col md:flex-row gap-5 items-center p-4 mt-8">
+        <div className="flex w-full flex-col md:flex-row gap-5 items-center p-4 mt-1 ">
           <div className="flex-1 flex items-center justify-center">
             <div className="bg-primary text-white  shadow-lg absolute w-28 h-10 flex justify-center items-center  -translate-x-32 rounded-full animate-pulse">
               <p className="font-bold">Aman</p>

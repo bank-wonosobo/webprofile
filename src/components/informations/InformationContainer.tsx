@@ -19,7 +19,16 @@ const items: TabsProps["items"] = [
 ];
 
 const InformationContainer: React.FC = () => {
-  return <Tabs defaultActiveKey="1" items={items} onChange={onChange} />;
+  return (
+    <section className="w-full py-10 bg-[#f0f5f8]">
+      <div className="mx-auto container">
+        <h2 className="text-black font-bold text-center text-2xl lg:text-3xl ">
+          News & Update
+        </h2>
+        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+      </div>
+    </section>
+  );
 };
 
 export default InformationContainer;

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { MdInstallMobile, MdOutlineLocationOn } from "react-icons/md";
+import { MdInstallMobile } from "react-icons/md";
 import { PiHandDepositBold } from "react-icons/pi";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
@@ -29,7 +29,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`p-3 fixed w-full ${
+      className={`px-3 pt-2 sticky top-0 py-2 shadow-sm w-full ${
         isFixed
           ? "shadow-sm border-b bg-opacity-80 backdrop-blur-sm"
           : "bg-opacity-100"
@@ -48,18 +48,18 @@ const Navbar: React.FC = () => {
         </Link>
         {/* menu */}
         <ul
-          className={`hidden text-sm lg:flex min-w-[430px] flex-row items-center justify-between text-primary font-semibold ${
+          className={`hidden h-full relative text-sm lg:flex min-w-[430px] flex-row items-center justify-between text-primary  font-semibold ${
             isOpen ? "" : "lg:flex"
           }`}
         >
-          <li>
-            <Link href={"#"} className="p-3 rounded-lg hover:bg-secondary/20">
+          <li className="hover:border-b-[3px] py-4 border-b-secondary  px-3">
+            <Link href={"#"} className="">
               Beranda
             </Link>
           </li>
-          <li className="flex rounded-lg justify-start items-center hover:bg-secondary/20">
+          <li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative ">
             <Dropdown name="Profile">
-              <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
+              <li className="px-4 py-3  hover:bg-gray-100 cursor-pointer">
                 Sejarah
               </li>
               <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
               </li>
             </Dropdown>
           </li>
-          <li className="flex rounded-lg justify-start items-center hover:bg-secondary/20">
+          <li className="flex justify-between items-center hover:border-b-[3px] border-b-secondary">
             <Dropdown name="Produk & Layanan">
               <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer flex flex-col">
                 <div className="flex gap-2 font-semibold">
@@ -120,23 +120,19 @@ const Navbar: React.FC = () => {
               </li>
             </Dropdown>
           </li>
-          <li>
-            <Link href={"#"} className="p-3 rounded-lg hover:bg-secondary/20">
-              Informasi
-            </Link>
+          <li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
+            <Link href={"#"}>Informasi</Link>
           </li>
-          <li className="flex p-3 rounded-lg justify-start items-center hover:bg-secondary/20">
-            <Link href={"#"} className="rounded-lg ">
+          <li className="flex py-3 justify-between items-center px-3 hover:border-b-[3px] border-b-secondary">
+            <Link href={"#"} className="">
               Publikasi
             </Link>
             <RiArrowDropDownLine size={23} />
           </li>
-          <li>
-            <Link href={"#"} className="p-3 rounded-lg hover:bg-secondary/20">
-              Karir
-            </Link>
+          <li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
+            <Link href={"#"}>Karir</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href={"#"} className="py-3">
               <MdOutlineLocationOn
                 color="wihte"
@@ -144,7 +140,7 @@ const Navbar: React.FC = () => {
                 className="animate-bounce ml-10"
               />
             </Link>
-          </li>
+          </li> */}
         </ul>
         <div className="lg:hidden p-4 text-primary">
           <button onClick={() => setIsOpen(!isOpen)}>

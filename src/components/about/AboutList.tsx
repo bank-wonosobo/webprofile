@@ -34,7 +34,7 @@ const AboutList: React.FC = () => {
       items={items}
       bordered={false}
       defaultActiveKey={["1"]}
-      className="text-lg"
+      className="text-lg bg-white"
     />
   );
 };

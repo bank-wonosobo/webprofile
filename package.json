@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "antd": "^5.24.2",
+    "lucide-react": "^0.485.0",
     "next": "15.1.7",
     "next-plugin-antd-less": "^1.8.0",
     "react": "^19.0.0",

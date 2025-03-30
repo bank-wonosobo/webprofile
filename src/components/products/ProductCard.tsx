@@ -9,7 +9,7 @@ const ProductCard: React.FC = () => {
     >
       <div className="relative">
         <div
-          className="min-h-[150px] max-h-[150px] bg-cover p-5 text-white content-after-secondary"
+          className="min-h-[150px] max-h-[150px] bg-cover p-2 text-white content-after-secondary"
           style={{
             backgroundImage: `url('/bg-1.jpg')`,
             backgroundPosition: "10px",
