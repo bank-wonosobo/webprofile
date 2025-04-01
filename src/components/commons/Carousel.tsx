@@ -94,24 +94,29 @@
 
 // export default BWCarousel;
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
-const images = ["1.png", "banner-kurban.png", "1.png"];
+const images = ["banner-kurban.png", "banner-kurban.png", "banner-kurban.png"];
 
-const CustomPrevArrow = (props) => (
+interface ArrowProps {
+  onClick?: () => void;
+}
+
+const CustomPrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
   <button
-    {...props}
+    onClick={onClick}
     className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10"
   >
     <ChevronLeft size={24} />
   </button>
 );
 
-const CustomNextArrow = (props) => (
+const CustomNextArrow: React.FC<ArrowProps> = ({ onClick }) => (
   <button
-    {...props}
+    onClick={onClick}
     className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md z-10"
   >
     <ChevronRight size={24} />
