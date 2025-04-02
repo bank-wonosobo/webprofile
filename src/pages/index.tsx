@@ -1,10 +1,10 @@
 import About from "@/components/about/About";
 import MainLayout from "@/components/app/MainLayout";
 import BWCarousel from "@/components/commons/Carousel";
+import Hero from "@/components/commons/Hero";
 import InformationContainer from "@/components/informations/InformationContainer";
 import ProductMenu from "@/components/products/ProductMenu";
 import SimulatorList from "@/components/simulator/SimulationList";
-import Search from "antd/es/input/Search";
 import Head from "next/head";
 
 export default function Home() {
@@ -14,23 +14,7 @@ export default function Home() {
         <title>PT BPR Bank Wonosobo - Home Page</title>
       </Head>
       <MainLayout>
-        <section className="w-full pt-[100px] pb-20 bg-[url('/bg-hero-white.png')] bg-orange-50   bg-cover bg-center">
-          <div className="mx-auto container">
-            <div className="container">
-              <h1 className="text-5xl font-bold">Bank Wonosobo</h1>
-              <p className="font-normal mt-3">
-                Bank UMKM nya Kabupaten Wonosobo
-              </p>
-              <Search
-                className="mt-4"
-                placeholder="input search text"
-                // onSearch={onSearch}
-                style={{ width: 200 }}
-              />
-            </div>
-          </div>
-        </section>
-
+        <Hero />
         <BWCarousel />
         <ProductMenu />
         <About />
