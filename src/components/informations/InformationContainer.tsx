@@ -22,10 +22,15 @@ const InformationContainer: React.FC = () => {
   return (
     <section className="w-full py-10 bg-[#f0f5f8]">
       <div className="mx-auto container">
-        <h2 className="text-black font-bold text-center text-2xl lg:text-3xl ">
+        <h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-5">
           News & Update
         </h2>
-        <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+        <Tabs
+          defaultActiveKey="1"
+          items={items}
+          onChange={onChange}
+          className="bg-white px-10 py-5"
+        />
       </div>
     </section>
   );

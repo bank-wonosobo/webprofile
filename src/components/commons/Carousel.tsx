@@ -136,7 +136,7 @@ const BWCarousel = () => {
   };
 
   return (
-    <div className="relative pt-[80px] w-full container mx-auto">
+    <div className="relative mt-2 w-full container mx-auto">
       <Slider {...settings}>
         {images.map((src, index) => (
           <div

@@ -1,6 +1,17 @@
 import Link from "next/link";
 
-const NewsCard: React.FC = () => {
+interface NewsCardProps {
+  news: {
+    title: string;
+    body: string;
+    author: string;
+    status: string;
+    image_url: string;
+    date_publish: string;
+  };
+}
+
+const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
   return (
     <Link
       href={"#"}
@@ -8,18 +19,18 @@ const NewsCard: React.FC = () => {
     >
       <div className="relative">
         <div
-          className="h-[150px] w-[150px] bg-cover p-5 text-white content-after-secondary hover:scale-110 transition-all duration-700"
+          className="h-[150px] w-[150px] bg-cover p-5 text-white content-after-secondary hover:scale-110 transition-all duration-400"
           style={{
-            backgroundImage: `url('/image.png')`,
+            backgroundImage: `url('${news.image_url}')`,
             backgroundPosition: "10px",
           }}
         ></div>
       </div>
 
       <div className="p-5">
-        <p className="text-gray-700">20 Jan 2025 | Berita</p>
+        <p className="text-gray-700">{news.date_publish} | Berita</p>
         <p className="font-medium text-sm mt-2">
-          Menabung Lebih Mudah dan Aman, Masa Depan Lebih Cerah
+          {news.title.slice(0, 75)} {news.title.length > 75 && <span>...</span>}
         </p>
       </div>
     </Link>
