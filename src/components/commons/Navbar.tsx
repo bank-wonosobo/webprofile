@@ -47,12 +47,12 @@ const Navbar: React.FC = () => {
 			<nav className=" py-2 w-full container mx-auto">
 				<div className="flex flex-wrap items-center justify-between">
 					{/* Logo */}
-					<Link href="/" className="p-3">
+					<Link href="/" className="p-3 mx-1">
 						<img src="/static/logo-bw.svg" alt="" className="w-40" />
 					</Link>
 
 					{/* Mobile menu toggle button */}
-					<div className="lg:hidden p-3 text-primary">
+					<div className="lg:hidden p-3 mx-1 text-primary">
 						<button onClick={() => setIsOpen(!isOpen)}>
 							{isOpen ? <RxCross2 size={30} /> : <TbMenu4 size={30} />}
 						</button>
@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
 							</Dropdown>
 						</li>
 						<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
-							<Link href={"#"}>Informasi</Link>
+							<Link href={"/informasi"}>Informasi</Link>
 						</li>
 						<li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative">
 							<Dropdown name="Publikasi">
@@ -185,14 +185,14 @@ const Navbar: React.FC = () => {
 				{isOpen && (
 					<div className="lg:hidden w-full mt-4 border-t pt-4">
 						<ul className="flex flex-col space-y-3 text-primary font-medium">
-							<li className="py-2 px-2 border-b border-gray-100">
+							<li className="py-2 px-4 border-b border-gray-100">
 								<Link href={"/"} onClick={() => setIsOpen(false)}>
 									Beranda
 								</Link>
 							</li>
 
 							{/* Profile Menu with submenu */}
-							<li className="py-2 px-2 border-b border-gray-100">
+							<li className="py-2 px-4 border-b border-gray-100">
 								<div
 									className="flex items-center justify-between cursor-pointer"
 									onClick={() => toggleMobileSubmenu("profile")}>
@@ -238,7 +238,7 @@ const Navbar: React.FC = () => {
 							</li>
 
 							{/* Produk & Layanan Menu */}
-							<li className="py-2 px-2 border-b border-gray-100">
+							<li className="py-2 px-4 border-b border-gray-100">
 								<div
 									className="flex items-center justify-between cursor-pointer"
 									onClick={() => toggleMobileSubmenu("products")}>
@@ -300,14 +300,14 @@ const Navbar: React.FC = () => {
 								)}
 							</li>
 
-							<li className="py-2 px-2 border-b border-gray-100">
-								<Link href={"#"} onClick={() => setIsOpen(false)}>
+							<li className="py-2 px-4 border-b border-gray-100">
+								<Link href={"/informasi"} onClick={() => setIsOpen(false)}>
 									Informasi
 								</Link>
 							</li>
 
 							{/* Publikasi Menu */}
-							<li className="py-2 px-2 border-b border-gray-100">
+							<li className="py-2 px-4 border-b border-gray-100">
 								<div
 									className="flex items-center justify-between cursor-pointer"
 									onClick={() => toggleMobileSubmenu("publications")}>
@@ -361,19 +361,19 @@ const Navbar: React.FC = () => {
 								)}
 							</li>
 
-							<li className="py-2 px-2 border-b border-gray-100">
+							<li className="py-2 px-4 border-b border-gray-100">
 								<Link href={"lelang"} onClick={() => setIsOpen(false)}>
 									Lelang
 								</Link>
 							</li>
 
-							<li className="py-2 px-2 border-b border-gray-100">
+							<li className="py-2 px-4 border-b border-gray-100">
 								<Link href={"karir"} onClick={() => setIsOpen(false)}>
 									Karir
 								</Link>
 							</li>
 
-							<li className="py-2 px-2 border-b border-gray-100">
+							<li className="py-2 px-4 border-b border-gray-100">
 								<Link
 									href={"lapor-pelanggaran"}
 									onClick={() => setIsOpen(false)}>

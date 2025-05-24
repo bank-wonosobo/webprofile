@@ -18,7 +18,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 		<div className={`${notosans.variable}`}>
 			<header className="w-full bg-slate-100 ">
 				<div className="mx-auto p-3 container flex justify-end">
-					<ul className="flex gap-x-4 font-normal text-xs ">
+					<ul className="flex gap-x-4 font-normal text-xs mx-1 ">
 						<li>
 							<a
 								href="#"

@@ -1,8 +1,8 @@
 const news = [
-  {
-    title:
-      "PT BPR Bank Wonosobo (Perseroda) Raih 3 Penghargaan Prestisius di BUMD Awards 2025",
-    body: `
+	{
+		title:
+			"PT BPR Bank Wonosobo (Perseroda) Raih 3 Penghargaan Prestisius di BUMD Awards 2025",
+		body: `
       Jakarta, 28 April 2025 PT BPR Bank Wonosobo (Perseroda) kembali mengukir prestasi membanggakan tingkat nasional dengan meraih tiga penghargaan bergengsi dalam ajang BUMD AWARDS 2025 yang diselenggarakan oleh TopBUsiness. Acara ini berlangsung dengan meriah di Ballroom Hotel Rafles Jakarta dan dihadiri oleh para tokoh penting, kepala daerah, serta pimpinan BUMD dari seluruh Indonesia.
 
       Tiga penghargaan yang berhasil diraih oleh PT BPR Bank Wonosobo (Perseroda) adalah :
@@ -19,15 +19,15 @@ const news = [
       Sementara itu Bupati Wonosobo Bapak Afif Nurhidayat, S.Ag., juga menyampaikan apresiasi kepada PT BPR Bank Wonosobo atas konsistensinya dalam mendukung program pembangunan daerah.
       “Keberhasilan ini adalah hasil kerja bersama, Pemkab Wonosobo akan terus memberikan dukungan agar Bank Wonosobo semakin kuat dan berdaya saing”.
     `,
-    author: "Gany Adhiatman",
-    status: "publish",
-    image_url:
-      "https://i.postimg.cc/brk73F3m/Whats-App-Image-2025-05-02-at-12-52-05.jpg",
-    date_publish: "28 April 2025",
-  },
-  {
-    title: "Pelaksanaan Kegiatan Bela Negara Karyawan Bank Wonosobo",
-    body: `
+		author: "Gany Adhiatman",
+		status: "publish",
+		image_url:
+			"https://i.postimg.cc/brk73F3m/Whats-App-Image-2025-05-02-at-12-52-05.jpg",
+		date_publish: "28 April 2025",
+	},
+	{
+		title: "Pelaksanaan Kegiatan Bela Negara Karyawan Bank Wonosobo",
+		body: `
       Taman Wisata Wonoland, 17–20 April 2025
 
       Wonosobo, 20 April 2025 — Dalam upaya membentuk karakter kuat dan meningkatkan semangat nasionalisme di lingkungan kerja, PT BPR Bank Wonosobo (Perseroda) menggelar kegiatan Bela Negara bagi seluruh karyawan dan karyawatinya. Kegiatan ini berlangsung selama empat hari, 17–20 April 2025, bertempat di Taman Wisata Wonoland, Wonosobo.
@@ -42,16 +42,16 @@ const news = [
 
       Melalui kegiatan ini, Bank Wonosobo menegaskan komitmennya dalam mencetak insan perbankan yang tidak hanya unggul secara kompetensi, tetapi juga tangguh secara karakter, demi mendukung pelayanan terbaik untuk masyarakat Wonosobo dan sekitarnya.
     `,
-    author: "Gany Adhiatman",
-    status: "publish",
-    image_url:
-      "https://i.postimg.cc/mZwmrP6d/Whats-App-Image-2025-05-02-at-13-35-51.jpg",
-    date_publish: "28 April 2025",
-  },
-  {
-    title:
-      "Bank Wonosobo dan KAGAMA Wonosobo Gelar Edukasi Literasi Keuangan bagi Pelaku Wisata Kawasan Gunung Cilik",
-    body: `
+		author: "Gany Adhiatman",
+		status: "publish",
+		image_url:
+			"https://i.postimg.cc/mZwmrP6d/Whats-App-Image-2025-05-02-at-13-35-51.jpg",
+		date_publish: "28 April 2025",
+	},
+	{
+		title:
+			"Bank Wonosobo dan KAGAMA Wonosobo Gelar Edukasi Literasi Keuangan bagi Pelaku Wisata Kawasan Gunung Cilik",
+		body: `
       Wonosobo, 17 April 2025
 
       Sebagai bagian dari komitmen meningkatkan literasi keuangan dan mendukung pertumbuhan ekonomi lokal, Bank Wonosobo bekerja sama dengan KAGAMA (Keluarga Alumni Gadjah Mada) Wonosobo menyelenggarakan kegiatan edukasi literasi keuangan bagi para pelaku wisata di kawasan Gunung Cilik dan sekitarnya. Kegiatan ini berlangsung pada Kamis, 17 April 2025 di Aula Tambi Bedakah.
@@ -68,12 +68,38 @@ const news = [
 
       Bank Wonosobo dan KAGAMA Wonosobo berharap kolaborasi ini dapat terus berlanjut untuk menciptakan ekosistem pariwisata yang kuat, mandiri, dan inklusif di Kabupaten Wonosobo.
     `,
-    author: "Gany Adhiatman",
-    status: "publish",
-    image_url:
-      "https://i.postimg.cc/FsbJj6LG/Whats-App-Image-2025-05-02-at-13-37-19.jpg",
-    date_publish: "17 April 2025",
-  },
+		author: "Gany Adhiatman",
+		status: "publish",
+		image_url:
+			"https://i.postimg.cc/FsbJj6LG/Whats-App-Image-2025-05-02-at-13-37-19.jpg",
+		date_publish: "17 April 2025",
+	},
+	{
+		title:
+			"Bank Wonosobo dan KAGAMA Wonosobo Gelar Edukasi Literasi Keuangan bagi Pelaku Wisata Kawasan Gunung Cilik",
+		body: `
+      Wonosobo, 17 April 2025
+
+      Sebagai bagian dari komitmen meningkatkan literasi keuangan dan mendukung pertumbuhan ekonomi lokal, Bank Wonosobo bekerja sama dengan KAGAMA (Keluarga Alumni Gadjah Mada) Wonosobo menyelenggarakan kegiatan edukasi literasi keuangan bagi para pelaku wisata di kawasan Gunung Cilik dan sekitarnya. Kegiatan ini berlangsung pada Kamis, 17 April 2025 di Aula Tambi Bedakah.
+
+      Acara ini diikuti oleh para pelaku wisata lokal, mulai dari pengelola destinasi wisata, pemilik homestay, pedagang oleh-oleh, hingga pelaku UMKM. Melalui kegiatan ini, peserta dibekali dengan pengetahuan tentang pengelolaan keuangan, pemanfaatan layanan perbankan, serta akses pembiayaan usaha secara tepat dan berkelanjutan.
+
+      Kepala Divisi Dana Bank Wonosobo, Sutopo, S.E., menyampaikan bahwa kegiatan ini merupakan bentuk sinergi antara dunia perbankan dan komunitas alumni perguruan tinggi untuk mendukung sektor wisata lokal.
+
+      “Kawasan Gunung Cilik memiliki potensi besar dalam sektor pariwisata. Dengan adanya edukasi keuangan ini, kami berharap pelaku wisata mampu mengelola usahanya dengan lebih profesional dan mandiri,” ujarnya.
+
+      Perwakilan KAGAMA Wonosobo juga menyampaikan pentingnya peran alumni dalam berkontribusi aktif terhadap pembangunan daerah, khususnya dalam mendorong sektor riil seperti pariwisata. KAGAMA turut serta dalam memfasilitasi kegiatan ini dan menghubungkan para pelaku wisata dengan berbagai narasumber yang kompeten.
+
+      Kegiatan berlangsung interaktif dengan sesi diskusi, tanya jawab, serta simulasi penggunaan layanan keuangan digital yang dapat membantu efisiensi pengelolaan usaha wisata.
+
+      Bank Wonosobo dan KAGAMA Wonosobo berharap kolaborasi ini dapat terus berlanjut untuk menciptakan ekosistem pariwisata yang kuat, mandiri, dan inklusif di Kabupaten Wonosobo.
+    `,
+		author: "Gany Adhiatman",
+		status: "publish",
+		image_url:
+			"https://i.postimg.cc/FsbJj6LG/Whats-App-Image-2025-05-02-at-13-37-19.jpg",
+		date_publish: "17 April 2025",
+	},
 ];
 
 export default news;
