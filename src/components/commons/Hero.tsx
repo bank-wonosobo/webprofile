@@ -1,18 +1,40 @@
-import Search from "antd/es/input/Search";
+import Link from "next/link";
 
 const Hero: React.FC = () => {
 	return (
-		<section className="w-full pt-[100px] pb-20 bg-[url('/bg-hero-white.png')] bg-secondary/20 text-primary  bg-cover bg-center">
-			<div className="mx-auto container">
-				<div className="container px-4">
-					<h1 className="text-3xl md:text-5xl font-bold">Bank Wonosobo</h1>
-					<p className="font-normal mt-3">Bank UMKM nya Kabupaten Wonosobo</p>
-					<Search
-						className="mt-4"
-						placeholder="input search text"
-						// onSearch={onSearch}
-						style={{ width: 200 }}
-					/>
+		// <section className="w-full pb-20 bg-[url('/bg-hero-white.png')] bg-secondary/20 text-primary  bg-cover bg-center">
+		// 	<div className="mx-auto container">
+		// 		<div className="container px-4">
+		// 			<h1 className="text-3xl md:text-5xl font-bold mb-6">
+		// 				Bank-nge Wong Wonosobo
+		// 			</h1>
+		// 			<p className="font-normal mb-6">
+		// 				Memberikan Layanan Perbankan yang Mudah, Aman, dan Terpercaya untuk
+		// 				Masyarakat Wonosobo dan Sekitarnya
+		// 			</p>
+		// 			<Link href="/profil">
+		// 				<button className="bg-primary text-white hover:bg-secondary hover:text-primary transition-all duration-300 py-3  px-8 rounded-full">
+		// 					Info Perusahaan
+		// 				</button>
+		// 			</Link>
+		// 		</div>
+		// 	</div>
+		// </section>
+		<section className="w-full bg-[url('/bg-hero-white.png')] bg-secondary/20 text-primary mb-6 bg-cover bg-center h-[400px] flex items-center">
+			<div className="mx-auto container px-4">
+				<div className="container">
+					<h1 className="text-3xl md:text-5xl font-bold mb-6">
+						Bank-nge Wong Wonosobo
+					</h1>
+					<p className="font-normal mb-6">
+						Memberikan Layanan Perbankan yang Mudah, Aman, dan Terpercaya untuk
+						Masyarakat Wonosobo dan Sekitarnya
+					</p>
+					<Link href="/profil">
+						<button className="bg-primary text-white hover:bg-secondary hover:text-primary transition-all duration-300 py-3  px-8 rounded-full">
+							Info Perusahaan
+						</button>
+					</Link>
 				</div>
 			</div>
 		</section>

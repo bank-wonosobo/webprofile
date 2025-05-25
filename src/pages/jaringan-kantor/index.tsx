@@ -1,21 +1,16 @@
 import MainLayout from "@/components/app/MainLayout";
-import PageTitle from "@/components/commons/PageTitle";
+import SectionLayout from "@/components/app/SectionLayout";
+import TableJaringanKantor from "@/components/profil/JaringanKantor";
+import { Card } from "antd";
 
 export default function JaringanKantor() {
 	return (
 		<MainLayout>
-			<PageTitle title="Jaringan Kantor" />
-			<section className="container mx-auto ">
-				<div className="flex flex-col gap-y-4 mx-4">
-					<h1 className="text-3xl font-bold">Profil Bank Wonosobo</h1>
-					<p className="text-sm text-slate-500">
-						BPR Bank Wonosobo adalah lembaga keuangan yang memberikan layanan
-						perbankan kepada masyarakat di Kabupaten Wonosobo. Kami berkomitmen
-						untuk memberikan layanan terbaik dan membantu masyarakat dalam
-						mewujudkan impian finansial mereka.
-					</p>
-				</div>
-			</section>
+			<SectionLayout title="Jaringan Kantor">
+				<Card className="mb-6">
+					<TableJaringanKantor />
+				</Card>
+			</SectionLayout>
 		</MainLayout>
 	);
 }

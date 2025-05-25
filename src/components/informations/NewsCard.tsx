@@ -15,7 +15,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
 	return (
 		<Link
 			href={"#"}
-			className=" max-w-[350px] h-[300px] justify-start overflow-hidden rounded-xl hover:-translate-y-2 hover:shadow-xl cursor-pointer transition-all duration-500 hover:text-black">
+			className=" max-w-[350px] h-[300px] justify-start overflow-hidden rounded-xl hover:-translate-y-2 shadow-md hover:shadow-xl cursor-pointer transition-all duration-500 hover:text-black">
 			<div className="">
 				<div
 					className="aspect-video bg-cover p-5 text-white content-after-secondary hover:scale-110 transition-all duration-400"
