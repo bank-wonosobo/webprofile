@@ -1,21 +1,27 @@
 import MainLayout from "@/components/app/MainLayout";
-import PageTitle from "@/components/commons/PageTitle";
+import SectionLayout from "@/components/app/SectionLayout";
+import TabelLaporanTahunan from "@/components/publikasi/LaporanTahunan";
+import { Card } from "antd";
+import Link from "next/link";
 
 export default function LaporanPublikasi() {
 	return (
 		<MainLayout>
-			<PageTitle title="Laporan Publikasi" />
-			<section className="container mx-auto ">
-				<div className="flex flex-col gap-y-4 mx-4">
-					<h1 className="text-3xl font-bold">Profil Bank Wonosobo</h1>
-					<p className="text-sm text-slate-500">
-						BPR Bank Wonosobo adalah lembaga keuangan yang memberikan layanan
-						perbankan kepada masyarakat di Kabupaten Wonosobo. Kami berkomitmen
-						untuk memberikan layanan terbaik dan membantu masyarakat dalam
-						mewujudkan impian finansial mereka.
-					</p>
-				</div>
-			</section>
+			<SectionLayout title="Laporan Publikasi">
+				<Card className="shadow-sm">
+					<div className="mb-4">
+						<div className="flex items-center justify-between">
+							<p className="text-gray-600">
+								Daftar laporan tahunan yang tersedia untuk publikasi
+							</p>
+							<Link href="/publikasi" className="text-blue-400 hover:underline">
+								Semua Laporan
+							</Link>
+						</div>
+					</div>
+					<TabelLaporanTahunan />
+				</Card>
+			</SectionLayout>
 		</MainLayout>
 	);
 }

@@ -38,7 +38,7 @@ const ProductMenu: React.FC = () => {
 						<Link
 							key={product.name}
 							href={`/products/${product.name.toLowerCase()}`}
-							className="max-w-[350px] max-h-[300px] p-8 bg-white rounded-xl  hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer border bordeer-black/5">
+							className="max-w-[350px] max-h-[300px] p-4 lg:p-8  bg-white rounded-xl  hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer border bordeer-black/5">
 							<div className="bg-secondary/15 p-6 inline-block rounded-[30px]">
 								{product.icon}
 							</div>
