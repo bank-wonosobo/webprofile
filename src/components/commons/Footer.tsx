@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FiMail, FiPhone } from "react-icons/fi";
 
 const Footer: React.FC = () => {
@@ -12,9 +13,11 @@ const Footer: React.FC = () => {
 					<p>Kantor Pusat Bank Wonosobo</p>
 					<p>Jl. A. Yani No.rt 03 160</p>
 					<p>Wonosobo 56311</p>
-					<a href="#" className="text-blue-400 hover:underline">
+					<Link
+						href="jaringan-kantor"
+						className="text-blue-400 hover:underline">
 						Lokasi Bank Wonosobo Lainnya
-					</a>
+					</Link>
 				</div>
 
 				<div className="w-full text-sm">
@@ -61,11 +64,11 @@ const Footer: React.FC = () => {
 						This site is protected by reCAPTCHA and the Google{" "}
 						<a href="#" className="text-blue-400 hover:underline">
 							Privacy Policy
-						</a>{" "}
-						and{" "}
+						</a>
+						and
 						<a href="#" className="text-blue-400 hover:underline">
 							Terms of Service
-						</a>{" "}
+						</a>
 						apply.
 					</p>
 				</div>
