@@ -3,6 +3,7 @@ import Link from "next/link";
 interface NewsCardProps {
 	news: {
 		title: string;
+		slug: string;
 		content: string;
 		author: string;
 		status: string;
@@ -12,9 +13,13 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
+	if (!news || !news.title || !news.imageUrl) {
+		return null; // Render nothing if news data is incomplete
+	}
+
 	return (
 		<Link
-			href={"/informasi/" + news.title}
+			href={"/informasi/" + news.slug}
 			className=" max-w-[350px] h-[300px] justify-center overflow-hidden rounded-xl hover:-translate-y-2 shadow-md hover:shadow-xl cursor-pointer transition-all duration-500 hover:text-black">
 			<div className="">
 				<div
