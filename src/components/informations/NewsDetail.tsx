@@ -60,21 +60,21 @@ const ErrorMessage = ({ message }: { message: string }) => (
 const NewsContent = ({ news }: { news: NewsItem }) => (
 	<div className="mx-auto container">
 		<article className="max-w-4xl mx-auto mb-8">
-			<header className="mb-6">
-				{/* <h1 className="text-3xl font-bold mb-4">{news.title}</h1> */}
-				<div className="text-gray-600 space-y-1 flex justify-between">
-					<p>Oleh: {news.author}</p>
-					<p>{formatDate(news.created_at)}</p>
-				</div>
-			</header>
-
 			{news.image_url && (
 				<img
 					src={news.image_url}
 					alt={news.title}
-					className="w-full h-auto mb-6 rounded-lg"
+					className="w-full h-auto mb-4 rounded-lg"
 				/>
 			)}
+
+			<header className="mb-4">
+				{/* <h1 className="text-3xl font-bold mb-4">{news.title}</h1> */}
+				<div className="text-gray-600 flex justify-between">
+					<p>Oleh: {news.author}</p>
+					<p>{formatDate(news.created_at)}</p>
+				</div>
+			</header>
 
 			<div
 				className="prose max-w-none text-gray-700 leading-relaxed"

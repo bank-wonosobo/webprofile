@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { MdInstallMobile } from "react-icons/md";
@@ -6,10 +8,18 @@ import { RxCross2 } from "react-icons/rx";
 import { TbCreditCardPay, TbMenu4, TbPigMoney } from "react-icons/tb";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Dropdown from "./Dropdown";
+import getLaporanByType from "@/data/tipe-laporan";
+
+interface LaporanTypeItem {
+	id: number;
+	name: string;
+}
 
 const Navbar: React.FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isFixed, setIsFixed] = useState(false);
+	const [publikasi, setPublikasi] = useState<LaporanTypeItem[]>([]);
+	// const [loading, setLoading] = useState(true);
 
 	type MobileMenuKeys = "profile" | "products" | "publications";
 
@@ -30,6 +40,19 @@ const Navbar: React.FC = () => {
 
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await getLaporanByType();
+				setPublikasi(response.data || []);
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			}
+		};
+
+		fetchData();
 	}, []);
 
 	const toggleMobileSubmenu = (menu: MobileMenuKeys) => {
@@ -60,11 +83,11 @@ const Navbar: React.FC = () => {
 
 					{/* Desktop menu */}
 					<ul className="hidden h-full relative text-sm lg:flex min-w-[430px] flex-row items-center justify-between text-primary font-semibold">
-						<li className="hover:border-b-[3px] py-4 border-b-secondary px-3">
-							<Link href={"/"} className="">
+						<Link href={"/"} className="">
+							<li className="hover:border-b-[3px] py-4 border-b-secondary px-3">
 								Beranda
-							</Link>
-						</li>
+							</li>
+						</Link>
 						<li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative">
 							<Dropdown name="Profile">
 								<Link href={"/profil"}>
@@ -137,47 +160,37 @@ const Navbar: React.FC = () => {
 								</Link>
 							</Dropdown>
 						</li>
-						<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
-							<Link href={"/informasi"}>Informasi</Link>
-						</li>
+						<Link href={"/informasi"}>
+							<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
+								Informasi
+							</li>
+						</Link>
 						<li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative">
 							<Dropdown name="Publikasi">
-								<Link href={"/laporan-tahunan"}>
-									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-										Laporan Tahunan
-									</li>
-								</Link>
-								<Link href={"/laporan-tatakelola"}>
-									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-										Laporan Tata Kelola
-									</li>
-								</Link>
-								<Link href={"/laporan-publikasi"}>
-									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-										Laporan Publikasi
-									</li>
-								</Link>
-								<Link href={"/laporan-triwulan"}>
-									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-										Laporan Triwulan
-									</li>
-								</Link>
-								<Link href={"/laporan-keberlanjutan"}>
-									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-										Laporan Keberlanjutan
-									</li>
-								</Link>
+								{publikasi.map((item) => (
+									<Link key={item.id} href={`/publikasi/${item.name}`}>
+										<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
+											{item.name}
+										</li>
+									</Link>
+								))}
 							</Dropdown>
 						</li>
-						<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
-							<Link href={"lelang"}>Lelang</Link>
-						</li>
-						<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
-							<Link href={"karir"}>Karir</Link>
-						</li>
-						<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
-							<Link href={"lapor-pelanggaran"}>Lapor Pelanggaran</Link>
-						</li>
+						<Link href={"lelang"}>
+							<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
+								Lelang
+							</li>
+						</Link>
+						<Link href={"karir"}>
+							<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
+								Karir
+							</li>
+						</Link>
+						<Link href={"lapor-pelanggaran"}>
+							<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
+								Lapor Pelanggaran
+							</li>
+						</Link>
 					</ul>
 				</div>
 
@@ -322,41 +335,15 @@ const Navbar: React.FC = () => {
 								</div>
 								{mobileMenuOpen.publications && (
 									<ul className="pl-4 mt-2 space-y-2">
-										<li className="py-1">
-											<Link
-												href={"/laporan-tahunan"}
-												onClick={() => setIsOpen(false)}>
-												Laporan Tahunan
-											</Link>
-										</li>
-										<li className="py-1">
-											<Link
-												href={"/laporan-tatakelola"}
-												onClick={() => setIsOpen(false)}>
-												Laporan Tata Kelola
-											</Link>
-										</li>
-										<li className="py-1">
-											<Link
-												href={"/laporan-publikasi"}
-												onClick={() => setIsOpen(false)}>
-												Laporan Publikasi
-											</Link>
-										</li>
-										<li className="py-1">
-											<Link
-												href={"/laporan-triwulan"}
-												onClick={() => setIsOpen(false)}>
-												Laporan Triwulan
-											</Link>
-										</li>
-										<li className="py-1">
-											<Link
-												href={"/laporan-keberlanjutan"}
-												onClick={() => setIsOpen(false)}>
-												Laporan Keberlanjutan
-											</Link>
-										</li>
+										{publikasi.map((item) => (
+											<li key={item.id} className="py-1">
+												<Link
+													href={`/publikasi/${item.name}`}
+													onClick={() => setIsOpen(false)}>
+													{item.name}
+												</Link>
+											</li>
+										))}
 									</ul>
 								)}
 							</li>
