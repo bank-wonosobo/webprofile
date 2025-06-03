@@ -1,18 +1,20 @@
 export const getLaporanPublikasiByType = async (
 	year: string,
-	reportType: string,
+	reportId: string,
 	page: number = 1,
 	limit: number = 10
 ) => {
 	const params = new URLSearchParams({
-		year: year,
-		report_type: reportType,
 		page: page.toString(),
 		limit: limit.toString(),
 	});
 
+	if (year) {
+		params.set("year", year);
+	}
+
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_API_URL}/api/v1/reports?${params.toString()}`
+		`${process.env.NEXT_PUBLIC_API_URL}/api/v1/reports/${reportId}/report-type?${params}`
 	);
 
 	if (!response.ok) {
@@ -20,13 +22,11 @@ export const getLaporanPublikasiByType = async (
 	}
 
 	const data = await response.json();
-	return data;
+	return data.data;
 };
 
-// Fungsi sederhana untuk generate tahun yang tersedia
 export const getAvailableYears = () => {
 	const currentYear = new Date().getFullYear();
-	// Return 15 tahun terakhir (dari tahun sekarang mundur ke belakang)
 	return Array.from({ length: 15 }, (_, i) => currentYear - i);
 };
 

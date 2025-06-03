@@ -3,25 +3,18 @@ import SectionLayout from "@/components/app/SectionLayout";
 import TabelLaporan from "@/components/publikasi/TabelLaporan";
 import { Card, Breadcrumb } from "antd";
 import { HomeOutlined, FileTextOutlined } from "@ant-design/icons";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default function Page() {
 	const router = useRouter();
 
-	const slug = Array.isArray(router.query.slug)
-		? router.query.slug[0]
-		: router.query.slug ?? "";
+	const slug = router.query.slug;
 
-	// Format slug untuk display title
-	const formatTitle = (slug: string): string => {
-		return slug
-			.split("-")
-			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-			.join(" ");
-	};
+	const [id_report_type, nama_report] = Array.isArray(slug)
+		? slug
+		: [null, null];
 
-	if (!slug) {
+	if (!id_report_type || !nama_report) {
 		return (
 			<MainLayout>
 				<SectionLayout title="Memuat...">
@@ -33,7 +26,11 @@ export default function Page() {
 		);
 	}
 
-	const pageTitle = formatTitle(slug);
+	// Ubah format nama_report jadi kapital di awal kata (opsional)
+	const pageTitle = decodeURIComponent(nama_report)
+		.split("-")
+		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(" ");
 
 	return (
 		<MainLayout>
@@ -75,34 +72,14 @@ export default function Page() {
 									{pageTitle}
 								</h2>
 								<p className="text-gray-600">
-									Daftar laporan tahunan yang tersedia untuk publikasi
+									Daftar laporan yang tersedia untuk publikasi
 								</p>
 							</div>
-							<Link
-								href="/publikasi"
-								className="text-blue-500 hover:text-blue-700 hover:underline flex items-center gap-1">
-								<FileTextOutlined />
-								<span>Semua Laporan</span>
-							</Link>
 						</div>
 					</div>
 
-					<TabelLaporan slug={slug} />
+					<TabelLaporan slug={id_report_type} />
 				</Card>
-
-				{/* Debug info - hanya muncul di development mode
-				{process.env.NODE_ENV === "development" && (
-					<Card className="mt-4 bg-gray-50 border-dashed">
-						<div className="text-sm text-gray-600">
-							<strong>Debug Info:</strong>
-							<ul className="mt-1 ml-4">
-								<li>Slug: {slug}</li>
-								<li>Report Type: {slug}</li>
-								<li>Page Title: {pageTitle}</li>
-							</ul>
-						</div>
-					</Card>
-				)} */}
 			</SectionLayout>
 		</MainLayout>
 	);

@@ -168,7 +168,11 @@ const Navbar: React.FC = () => {
 						<li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative">
 							<Dropdown name="Publikasi">
 								{publikasi.map((item) => (
-									<Link key={item.id} href={`/publikasi/${item.name}`}>
+									<Link
+										key={item.id}
+										href={`/publikasi/${item.id}/${item.name
+											.toLowerCase()
+											.replace(/\s+/g, "-")}`}>
 										<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
 											{item.name}
 										</li>
@@ -338,7 +342,9 @@ const Navbar: React.FC = () => {
 										{publikasi.map((item) => (
 											<li key={item.id} className="py-1">
 												<Link
-													href={`/publikasi/${item.name}`}
+													href={`/publikasi/${item.id}/${item.name
+														.toLowerCase()
+														.replace(/\s+/g, "-")}`}
 													onClick={() => setIsOpen(false)}>
 													{item.name}
 												</Link>

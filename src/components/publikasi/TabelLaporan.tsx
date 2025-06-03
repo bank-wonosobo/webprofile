@@ -31,9 +31,7 @@ interface TabelLaporanProps {
 export default function TabelLaporan({ slug }: TabelLaporanProps) {
 	const [dataSource, setDataSource] = useState<LaporanData[]>([]);
 	const [loading, setLoading] = useState(true);
-	const [selectedYear, setSelectedYear] = useState(
-		new Date().getFullYear().toString()
-	);
+	const [selectedYear, setSelectedYear] = useState<string>(""); // "" means all years
 	const [availableYears, setAvailableYears] = useState<number[]>([]);
 	const [pagination, setPagination] = useState({
 		current: 1,
@@ -41,7 +39,6 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 		total: 0,
 	});
 
-	// Separate function to fetch data with specific page/pageSize
 	const fetchDataWithPagination = async (page: number, pageSize: number) => {
 		if (!slug) return;
 
@@ -54,8 +51,8 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 				pageSize
 			);
 
-			if (response?.message === "success" && response.data) {
-				setDataSource(response.data);
+			if (response?.reports) {
+				setDataSource(response.reports);
 				setPagination({
 					current: page,
 					pageSize: pageSize,
@@ -76,14 +73,12 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 		}
 	};
 
-	// Load available years
 	useEffect(() => {
 		setAvailableYears(getAvailableYears());
 	}, []);
 
-	// Fetch data when slug or year changes
 	useEffect(() => {
-		fetchDataWithPagination(1, 10); // Reset to page 1 when filters change
+		fetchDataWithPagination(1, 10);
 	}, [slug, selectedYear]);
 
 	const formatDate = (dateString: string) => {
@@ -140,7 +135,7 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 			title: "Ukuran",
 			key: "size",
 			width: 100,
-			render: (_, record) => (record.fileurl ? "PDF" : "-"),
+			render: (_, record) => (record.fileurl ? "-" : "-"),
 		},
 		{
 			title: "Aksi",
@@ -172,8 +167,9 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 					<span className="text-sm text-gray-600">Filter Tahun:</span>
 					<Select
 						value={selectedYear}
-						onChange={setSelectedYear}
-						style={{ width: 120 }}>
+						onChange={(val) => setSelectedYear(val)}
+						style={{ width: 140 }}>
+						<Select.Option value="">Semua Tahun</Select.Option>
 						{availableYears.map((year) => (
 							<Select.Option key={year} value={year.toString()}>
 								{year}
@@ -202,7 +198,9 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 					},
 				}}
 				locale={{
-					emptyText: `Tidak ada laporan ${slug} untuk tahun ${selectedYear}`,
+					emptyText: `Tidak ada laporan untuk tahun ${
+						selectedYear || "apapun"
+					}`,
 				}}
 				className="overflow-x-auto"
 				scroll={{ x: 1000 }}

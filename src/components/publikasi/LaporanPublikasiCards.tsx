@@ -62,7 +62,9 @@ const LaporanPublikasiCards: React.FC = () => {
 					{publikasi.map((loporan) => (
 						<Link
 							key={loporan.id}
-							href={`/publikasi/${loporan.name}`}
+							href={`/publikasi/${loporan.id}/${loporan.name
+								.toLowerCase()
+								.replace(/\s+/g, "-")}`}
 							className="max-w-[350px] p-4 lg:p-8 bg-white rounded-xl hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer border border-black/5">
 							<div className="bg-secondary/15 p-6 inline-block rounded-[30px]">
 								<LuFiles size={30} className="text-primary" />

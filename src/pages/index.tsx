@@ -6,7 +6,11 @@ import InformationSection from "@/components/informations/InformationSection";
 import ProductMenu from "@/components/products/ProductMenu";
 import SimulatorList from "@/components/simulator/SimulationList";
 import Head from "next/head";
+import dynamic from "next/dynamic";
 
+const MapClient = dynamic(() => import("../components/commons/Maps"), {
+	ssr: false,
+});
 export default function Home() {
 	return (
 		<>
@@ -20,6 +24,7 @@ export default function Home() {
 				<About />
 				<SimulatorList />
 				<InformationSection />
+				<MapClient />
 			</MainLayout>
 		</>
 	);
