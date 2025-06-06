@@ -12,10 +12,10 @@ export default function SectionLayout({
 			<Head>
 				<title>{title}</title>
 			</Head>
-			<section className="w-full bg-[url('/bg-hero-white.png')] bg-secondary/20 text-primary mb-6 bg-cover bg-center h-[130px] md:h-[230px] flex items-center">
+			<section className="w-full bg-[url('/bg-hero-white.png')] bg-[#f0f5f8]  text-primary mb-6 bg-cover bg-center h-[130px] md:h-[230px] flex items-center">
 				<div className="mx-auto container">
 					<div className="container text-center">
-						<h1 className="text-3xl md:text-5xl font-bold ">{title}</h1>
+						<h1 className="text-2xl md:text-5xl font-bold px-4 ">{title}</h1>
 					</div>
 				</div>
 			</section>

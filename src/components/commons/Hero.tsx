@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
 		// 		</div>
 		// 	</div>
 		// </section>
-		<section className="w-full bg-[url('/bg-hero-white.png')] bg-secondary/20 text-primary mb-6 bg-cover bg-center h-[400px] flex items-center">
+		<section className="w-full bg-[url('/bg-hero-white.png')] bg-[#f0f5f8] text-primary mb-6 bg-cover bg-center h-[400px] flex items-center">
 			<div className="mx-auto container px-4">
 				<div className="container">
 					<h1 className="text-3xl md:text-5xl font-bold mb-6">

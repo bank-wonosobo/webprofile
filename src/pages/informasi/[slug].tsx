@@ -3,6 +3,8 @@ import MainLayout from "@/components/app/MainLayout";
 import SectionLayout from "@/components/app/SectionLayout";
 import NewsDetail from "@/components/informations/NewsDetail";
 import { useRouter } from "next/router";
+import { Breadcrumb } from "antd";
+import { HomeOutlined, FileTextOutlined } from "@ant-design/icons";
 
 export default function Page() {
 	const router = useRouter();
@@ -28,6 +30,35 @@ export default function Page() {
 	return (
 		<MainLayout>
 			<SectionLayout title={displayTitle}>
+				{/* Breadcrumb */}
+				<div className="mb-4">
+					<Breadcrumb
+						items={[
+							{
+								href: "/",
+								title: (
+									<div className="flex items-center gap-1">
+										<HomeOutlined />
+										<span>Beranda</span>
+									</div>
+								),
+							},
+							{
+								href: "/informasi",
+								title: (
+									<div className="flex items-center gap-1">
+										<FileTextOutlined />
+										<span>Informasi</span>
+									</div>
+								),
+							},
+							{
+								title: displayTitle,
+							},
+						]}
+					/>
+				</div>
+
 				<NewsDetail slug={slug} onTitleLoad={setNewsTitle} />
 			</SectionLayout>
 		</MainLayout>
