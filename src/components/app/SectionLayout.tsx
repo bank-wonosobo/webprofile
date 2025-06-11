@@ -19,8 +19,8 @@ export default function SectionLayout({
 					</div>
 				</div>
 			</section>
-			<section className="container mx-auto ">
-				<div className="flex flex-col gap-y-4 mx-4">{children}</div>
+			<section className="container mx-auto">
+				<div className="flex flex-col gap-y-4 mx-4 mb-6">{children}</div>
 			</section>
 		</>
 	);

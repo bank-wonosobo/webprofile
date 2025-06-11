@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import getBeritaBySlug from "@/data/berita-slug";
+import Link from "next/link";
 
 interface NewsItem {
 	id: string;
@@ -20,6 +21,7 @@ interface NewsItem {
 interface NewsDetailProps {
 	slug: string;
 	onTitleLoad?: (title: string) => void;
+	onError?: (message: string) => void;
 }
 
 const formatDate = (dateString: string): string => {
@@ -46,17 +48,6 @@ const LoadingSkeleton = () => (
 	</div>
 );
 
-const ErrorMessage = ({ message }: { message: string }) => (
-	<div className="mx-auto container text-center py-8">
-		<p className="text-red-500 mb-4">{message}</p>
-		<button
-			onClick={() => window.location.reload()}
-			className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
-			Coba Lagi
-		</button>
-	</div>
-);
-
 const NewsContent = ({ news }: { news: NewsItem }) => (
 	<div className="mx-auto container">
 		<article className="max-w-4xl mx-auto mb-8">
@@ -69,7 +60,6 @@ const NewsContent = ({ news }: { news: NewsItem }) => (
 			)}
 
 			<header className="mb-4">
-				{/* <h1 className="text-3xl font-bold mb-4">{news.title}</h1> */}
 				<div className="text-gray-600 flex justify-between">
 					<p>Oleh: {news.author}</p>
 					<p>{formatDate(news.created_at)}</p>
@@ -84,13 +74,59 @@ const NewsContent = ({ news }: { news: NewsItem }) => (
 	</div>
 );
 
-export default function NewsDetail({ slug, onTitleLoad }: NewsDetailProps) {
+const NotFoundError = ({ slug }: { slug: string }) => (
+	<div className="mx-auto container">
+		<div className="text-center py-16">
+			<div className="mb-6">
+				<h1 className="text-4xl font-bold text-gray-800 mb-4">404</h1>
+				<h2 className="text-2xl font-semibold text-gray-600 mb-2">
+					Berita Tidak Ditemukan
+				</h2>
+				<p className="text-gray-500 mb-6 hidden">
+					Berita dengan slug
+					<span className="font-mono bg-gray-100 px-2 py-1 rounded">
+						{slug}
+					</span>
+					tidak dapat ditemukan.
+				</p>
+			</div>
+
+			<div className="space-y-3">
+				<div>
+					<Link
+						href="/informasi"
+						className="inline-block px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors mr-3">
+						Lihat Semua Berita
+					</Link>
+					<Link
+						href="/"
+						className="inline-block px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
+						Kembali ke Beranda
+					</Link>
+				</div>
+				<button
+					onClick={() => window.history.back()}
+					className="text-blue-500 hover:text-blue-700 underline">
+					Kembali ke halaman sebelumnya
+				</button>
+			</div>
+		</div>
+	</div>
+);
+
+export default function NewsDetail({
+	slug,
+	onTitleLoad,
+	onError,
+}: NewsDetailProps) {
 	const [news, setNews] = useState<NewsItem | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
+	const [isNotFound, setIsNotFound] = useState(false);
 
 	useEffect(() => {
 		if (!slug) return;
+
 		const fetchNews = async () => {
 			try {
 				const response = await getBeritaBySlug(slug);
@@ -101,22 +137,43 @@ export default function NewsDetail({ slug, onTitleLoad }: NewsDetailProps) {
 					setNews(newsData);
 					onTitleLoad?.(newsData.title);
 				} else {
-					setError("Berita tidak ditemukan");
+					const errMsg = "Berita tidak ditemukan";
+					setError(errMsg);
+					setIsNotFound(true);
+					onError?.(errMsg);
 				}
 			} catch (err) {
-				setError("Gagal memuat berita");
 				console.error("Error fetching news:", err);
+
+				// Check if it's a "record not found" error
+				if (err instanceof Error && err.message.includes("record not found")) {
+					setIsNotFound(true);
+					const errMsg = "Berita tidak ditemukan";
+					setError(errMsg);
+					onError?.(errMsg);
+				} else {
+					// Other errors (network, server, etc.)
+					const errMsg = "Gagal memuat berita. Silakan coba lagi nanti.";
+					setError(errMsg);
+					onError?.(errMsg);
+				}
 			} finally {
 				setLoading(false);
 			}
 		};
 
 		fetchNews();
-	}, [slug, onTitleLoad]);
+	}, [slug, onTitleLoad, onError]);
 
 	if (loading) return <LoadingSkeleton />;
-	if (error) return <ErrorMessage message={error} />;
-	if (!news) return <ErrorMessage message="Berita tidak ditemukan" />;
+
+	// Show 404 page for not found errors
+	if (isNotFound) return <NotFoundError slug={slug} />;
+
+	// For other errors, let parent component handle it
+	if (error && !isNotFound) return null;
+
+	if (!news) return null;
 
 	return <NewsContent news={news} />;
 }

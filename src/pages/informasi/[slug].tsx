@@ -9,13 +9,24 @@ import { HomeOutlined, FileTextOutlined } from "@ant-design/icons";
 export default function Page() {
 	const router = useRouter();
 	const [newsTitle, setNewsTitle] = useState<string>("");
+	const [fetchError, setFetchError] = useState<string | null>(null);
+	const [isNotFound, setIsNotFound] = useState(false);
 
 	const slug = Array.isArray(router.query.slug)
 		? router.query.slug[0]
 		: router.query.slug ?? "";
 
-	// Fallback title: gunakan slug jika title belum dimuat
 	const displayTitle = newsTitle || slug;
+
+	const handleError = (message: string) => {
+		setFetchError(message);
+		if (
+			message.includes("tidak ditemukan") ||
+			message.includes("record not found")
+		) {
+			setIsNotFound(true);
+		}
+	};
 
 	if (!slug) {
 		return (
@@ -29,37 +40,57 @@ export default function Page() {
 
 	return (
 		<MainLayout>
-			<SectionLayout title={displayTitle}>
-				{/* Breadcrumb */}
-				<div className="mb-4">
-					<Breadcrumb
-						items={[
-							{
-								href: "/",
-								title: (
-									<div className="flex items-center gap-1">
-										<HomeOutlined />
-										<span>Beranda</span>
-									</div>
-								),
-							},
-							{
-								href: "/informasi",
-								title: (
-									<div className="flex items-center gap-1">
-										<FileTextOutlined />
-										<span>Informasi</span>
-									</div>
-								),
-							},
-							{
-								title: displayTitle,
-							},
-						]}
-					/>
-				</div>
+			<SectionLayout
+				title={isNotFound ? "Berita Tidak Ditemukan" : displayTitle}>
+				{fetchError && !isNotFound ? (
+					<div className="text-center text-red-500 py-10">
+						<p className="mb-4">{fetchError}</p>
+						<button
+							onClick={() => window.location.reload()}
+							className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
+							Coba Lagi
+						</button>
+					</div>
+				) : (
+					<>
+						{/* Breadcrumb - Don't show for 404 pages */}
+						{!isNotFound && (
+							<div className="mb-4">
+								<Breadcrumb
+									items={[
+										{
+											href: "/",
+											title: (
+												<div className="flex items-center gap-1">
+													<HomeOutlined />
+													<span>Beranda</span>
+												</div>
+											),
+										},
+										{
+											href: "/informasi",
+											title: (
+												<div className="flex items-center gap-1">
+													<FileTextOutlined />
+													<span>Informasi</span>
+												</div>
+											),
+										},
+										{
+											title: displayTitle,
+										},
+									]}
+								/>
+							</div>
+						)}
 
-				<NewsDetail slug={slug} onTitleLoad={setNewsTitle} />
+						<NewsDetail
+							slug={slug}
+							onTitleLoad={setNewsTitle}
+							onError={handleError}
+						/>
+					</>
+				)}
 			</SectionLayout>
 		</MainLayout>
 	);

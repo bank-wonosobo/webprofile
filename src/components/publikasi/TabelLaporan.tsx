@@ -100,14 +100,10 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 			title: "Nama Laporan",
 			dataIndex: "title",
 			key: "title",
-			render: (text, record) => (
+			render: (text) => (
 				<div className="flex flex-col gap-1">
 					<div className="flex items-center gap-2">
-						<FileTextOutlined className="text-blue-500" />
 						<span className="font-medium">{text}</span>
-					</div>
-					<div className="ml-6 text-xs text-gray-400">
-						Status: {record.status}
 					</div>
 				</div>
 			),
@@ -138,19 +134,22 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 			render: (_, record) => (record.fileurl ? "-" : "-"),
 		},
 		{
-			title: "Aksi",
+			title: "File",
 			key: "action",
 			width: 120,
 			render: (_, record) => (
 				<Space>
 					{record.fileurl ? (
-						<a
-							href={record.fileurl}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-blue-500 hover:text-blue-700">
-							Unduh
-						</a>
+						<div className="flex items-center gap-2">
+							<FileTextOutlined className="text-blue-500" />
+							<a
+								href={record.fileurl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="text-blue-500 hover:text-blue-700">
+								Unduh
+							</a>
+						</div>
 					) : (
 						<span className="text-gray-400">Tidak tersedia</span>
 					)}

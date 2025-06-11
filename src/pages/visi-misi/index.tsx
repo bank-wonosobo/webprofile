@@ -1,21 +1,74 @@
 import MainLayout from "@/components/app/MainLayout";
-import PageTitle from "@/components/commons/PageTitle";
+import SectionLayout from "@/components/app/SectionLayout";
 
 export default function VisiMisi() {
 	return (
 		<MainLayout>
-			<PageTitle title="Visi dan Misi" />
-			<section className="container mx-auto ">
-				<div className="flex flex-col gap-y-4 mx-4">
-					<h1 className="text-3xl font-bold">Profil Bank Wonosobo</h1>
-					<p className="text-sm text-slate-500">
-						BPR Bank Wonosobo adalah lembaga keuangan yang memberikan layanan
-						perbankan kepada masyarakat di Kabupaten Wonosobo. Kami berkomitmen
-						untuk memberikan layanan terbaik dan membantu masyarakat dalam
-						mewujudkan impian finansial mereka.
-					</p>
+			<SectionLayout title="Visi & Misi">
+				<div className="flex justify-center items-center flex-col">
+					<div className="mb-8">
+						<h2 className="text-2xl font-bold  mb-2 text-center text-secondary">
+							Visi PT BPR BANK WONOSOBO (PERSERODA)
+						</h2>
+						<p className="text-lg font-semibold text-primary italic text-center">
+							“Menjadi BPR Terbaik yang Membanggakan”
+						</p>
+					</div>
+
+					<div>
+						<h2 className="text-2xl font-bold  mb-4 text-center text-secondary">
+							Misi - misi
+						</h2>
+						<ol className="list-decimal pl-5 space-y-4 text-primary">
+							<li>
+								<span className="font-medium">
+									Mencapai kinerja terbaik di antara BPR.
+								</span>
+								<ul className="list-[lower-alpha] pl-6 mt-1 space-y-1">
+									<li>Meningkatkan tingkat kesehatan.</li>
+									<li>Mengurangi risiko-risiko perbankan.</li>
+								</ul>
+							</li>
+
+							<li>
+								<span className="font-medium">
+									Meningkatkan pertumbuhan deviden.
+								</span>
+								<ul className="list-[lower-alpha] pl-6 mt-1 space-y-1">
+									<li>Meningkatkan kontribusi terhadap pemerintah daerah.</li>
+									<li>
+										Memberikan Deviden yang tertinggi di antara BUMD di
+										Kabupaten Wonosobo.
+									</li>
+									<li>Meningkatkan peran dalam perekonomian daerah.</li>
+								</ul>
+							</li>
+
+							<li>
+								<span className="font-medium">
+									Meningkatkan reputasi dan menjadikan PT BPR BANK WONOSOBO
+									(PERSERODA) sebagai pilihan utama masyarakat Wonosobo dan
+									sekitarnya.
+								</span>
+								<ul className="list-[lower-alpha] pl-6 mt-1 space-y-1">
+									<li>Meningkatkan profesionalisme dan Sumber Daya Manusia.</li>
+									<li>
+										Meningkatkan pelayanan yang efektif, efisien dan tanggap.
+									</li>
+									<li>
+										Meningkatkan produk layanan yang lengkap dengan dukungan
+										teknologi informasi yang unggul dan terjangkau segala
+										lapisan masyarakat.
+									</li>
+									<li>
+										Mencapai Image Bank Wonosobo sebagai “Bange wong Wonosobo”.
+									</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
 				</div>
-			</section>
+			</SectionLayout>
 		</MainLayout>
 	);
 }
