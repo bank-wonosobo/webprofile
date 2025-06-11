@@ -1,5 +1,6 @@
 import { Tabs, TabsProps } from "antd";
 import NewsList from "./NewsList";
+import AnnouncementTable from "./AnnouncementTable";
 
 const onChange = (key: string) => {
 	console.log(key);
@@ -14,7 +15,7 @@ const items: TabsProps["items"] = [
 	{
 		key: "2",
 		label: <h3 className="text-lg font-bold">Pengumuman</h3>,
-		children: <p className="text-center">Pengumuman belum tersedia</p>,
+		children: <AnnouncementTable />,
 	},
 ];
 

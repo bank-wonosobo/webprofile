@@ -29,16 +29,16 @@ const ProductMenu: React.FC = () => {
 	];
 	return (
 		<section className="w-full pt-10 pb-10 ">
-			<div className="mx-auto container">
+			<div className="mx-auto container flex flex-col items-center justify-center ">
 				<h2 className="text-black font-bold text-center text-2xl lg:text-3xl">
 					Produk & Layanan Kami
 				</h2>
-				<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 m-4 lg:mt-10">
+				<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 m-4 lg:mt-10 ">
 					{products.map((product) => (
 						<Link
 							key={product.name}
 							href={`/products/${product.name.toLowerCase()}`}
-							className="max-w-[350px] max-h-[300px] p-4 lg:p-8  bg-white rounded-xl  hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer border bordeer-black/5">
+							className="max-w-[350px] max-h-[300px] p-4 lg:p-8 bg-white rounded-xl  hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer border bordeer-black/5">
 							<div className="bg-secondary/15 p-6 inline-block rounded-[30px]">
 								{product.icon}
 							</div>

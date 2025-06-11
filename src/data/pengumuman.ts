@@ -1,10 +1,13 @@
-interface NewsItem {
+interface Pengumuman {
 	id: string;
 	title: string;
-	slug: string;
 	content: string;
 	author: string;
-	image_url: string;
+	target_audience: string;
+	start_date: string;
+	end_date: string;
+	attachment_url: string | null;
+	is_active: boolean;
 	published_at: string | null;
 	status: string;
 	approved_by: string | null;
@@ -14,19 +17,19 @@ interface NewsItem {
 
 interface ApiResponse {
 	message: string;
-	data: NewsItem[];
+	data: Pengumuman[];
 	page: number;
 	limit: number;
 	total: number;
 	total_page: number;
 }
 
-export const getBerita = async (
+export const getPengumuman = async (
 	page: number = 1,
-	limit: number = 8
+	limit: number = 10
 ): Promise<ApiResponse> => {
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_API_URL}/api/v1/admin/news?page=${page}&limit=${limit}`
+		`${process.env.NEXT_PUBLIC_API_URL}/api/v1/announcements?page=${page}&limit=${limit}`
 	);
 
 	if (!response.ok) {
@@ -38,8 +41,8 @@ export const getBerita = async (
 };
 
 // Fungsi backward compatibility untuk kode lama yang tidak menggunakan parameter
-export const getBeritaLegacy = async () => {
-	return await getBerita(1, 8);
+export const getPengumumanLegacy = async () => {
+	return await getPengumuman(1, 10);
 };
 
-export default getBerita;
+export default getPengumuman;
