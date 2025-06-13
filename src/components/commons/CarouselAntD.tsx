@@ -61,7 +61,6 @@ export default function CarouselAntD() {
 	return (
 		<div className="container mx-auto mt-2 px-4">
 			<Carousel
-				effect="fade"
 				autoplay={{ dotDuration: true }}
 				infinite
 				autoplaySpeed={5000}

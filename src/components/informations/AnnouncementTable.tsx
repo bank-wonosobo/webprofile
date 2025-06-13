@@ -133,7 +133,7 @@ export default function AnnouncementTable() {
 	];
 
 	return (
-		<div className="w-full m-4">
+		<div className="container mx-auto">
 			<Table
 				columns={columns}
 				dataSource={data}
@@ -148,7 +148,7 @@ export default function AnnouncementTable() {
 					onChange: fetchData,
 				}}
 				locale={{ emptyText: "Tidak ada pengumuman tersedia" }}
-				className="overflow-x-auto"
+				className=" mx-4"
 				scroll={{ x: 1200 }}
 				rowClassName={({ is_active }) => (is_active ? "" : "opacity-60")}
 			/>
