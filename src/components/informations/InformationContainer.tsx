@@ -26,7 +26,7 @@ const InformationContainer: React.FC = () => {
 				defaultActiveKey="1"
 				items={items}
 				onChange={onChange}
-				className="bg-white w-full rounded-2xl mb-8 pb-8 "
+				className="bg-white w-full rounded-2xl container mx-auto px-4 pb-8"
 				centered={true}
 				size="large"
 			/>

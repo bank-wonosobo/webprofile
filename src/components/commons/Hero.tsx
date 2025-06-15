@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
 		// 		</div>
 		// 	</div>
 		// </section>
-		<section className="w-full bg-[url('/bg-hero-white.png')] bg-[#f0f5f8] text-primary mb-6 bg-cover bg-center h-[400px] flex items-center">
+		<section className="w-full bg-[url('/bg-hero-white.png')] bg-[#f0f5f8] text-primary bg-cover bg-center h-[350px] flex items-center mb-8">
 			<div className="mx-auto container px-4">
 				<div className="container">
 					<h1 className="text-3xl md:text-5xl font-bold mb-6">
@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
 						Masyarakat Wonosobo dan Sekitarnya
 					</p>
 					<Link href="/profil">
-						<button className="bg-primary text-white hover:bg-secondary hover:text-primary transition-all duration-300 py-3  px-8 rounded-full">
+						<button className="bg-primary text-white hover:bg-secondary hover:text-primary transition-all duration-300 py-3 px-8 rounded-full">
 							Info Perusahaan
 						</button>
 					</Link>

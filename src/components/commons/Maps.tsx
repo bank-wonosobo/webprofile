@@ -20,8 +20,8 @@ L.Icon.Default.mergeOptions({
 
 export default function MapClient() {
 	return (
-		<div className="container  mx-auto my-10 sm:w-full md:w-3/4 lg:w-1/2 aspect-video px-4">
-			<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-6">
+		<div className="container  mx-auto sm:w-full md:w-3/4 lg:w-1/2 aspect-video px-4 mb-8">
+			<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-8">
 				Peta Lokasi Kantor Bank Wonosobo
 			</h2>
 			<MapContainer

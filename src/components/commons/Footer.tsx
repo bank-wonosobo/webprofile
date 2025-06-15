@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
 			<div className="container mx-auto">
 				<img src="/static/logo-bw-white.svg" alt="" className="w-40" />
 			</div>
-			<div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+			<div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
 				<div>
 					<h3 className="text-white font-semibold mb-2">Kantor Pusat</h3>
 					<p>Kantor Pusat Bank Wonosobo</p>

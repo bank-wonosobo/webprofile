@@ -1,12 +1,13 @@
 import MainLayout from "@/components/app/MainLayout";
 import SectionLayout from "@/components/app/SectionLayout";
+import { RightOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
 export default function Profile() {
 	return (
 		<MainLayout>
 			<SectionLayout title="Profil">
-				<div className="mx-auto container max-w-4xl px-4 leading-relaxed">
+				<div className="mx-auto container max-w-4xl px-4 leading-relaxed font-light">
 					<ol className="list-[upper-roman]">
 						<li className="font-bold ">
 							<h1>INFORMASI PERUSAHAAN</h1>
@@ -177,10 +178,10 @@ export default function Profile() {
 						<img
 							src="/susunan-pengurus.png"
 							alt="Susunan Pengurus PT BPR Bank Wonosobo (Perseroda) per 31 Desember 2024"
-							className="my-4"
+							className="my-4 rounded-xl"
 						/>
 						<div className="flex flex-col item lg:items-center lg:flex-row gap-4">
-							<img src="/one.png" alt="" className="w-56 mx-auto" />
+							<img src="/one.png" alt="" className="w-56 mx-auto rounded-xl" />
 							<p className="text-justify">
 								<span className="font-bold">a. Komisaris</span> <br />
 								Komisaris Utama : Drs. One Andang Wardoyo, MSI 25 September
@@ -192,8 +193,12 @@ export default function Profile() {
 							</p>
 						</div>
 						<div className="flex flex-col item lg:items-center lg:flex-row gap-4 my-4">
-							<img src="/galih.jpg" alt="" className="w-56 mx-auto" />
-							<p>
+							<img
+								src="/galih.jpg"
+								alt=""
+								className="w-56 mx-auto rounded-xl"
+							/>
+							<p className="text-justify">
 								<span className="font-bold">b. Direksi</span> <br />
 								Direktur Operasional : Galih Pambajeng, S.Ak. Lahir di Purworejo
 								pada tanggal 20 April 1987. Menyelesaikan pendidikan Diploma III
@@ -267,8 +272,8 @@ export default function Profile() {
 					<div className="text-right mt-6">
 						<Link
 							href="/struktur-organisasi"
-							className="text-blue-600 underline">
-							Lanjut: Struktur Organisasi {">"}
+							className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-300 gap-1">
+							Lanjut: Struktur Organisasi <RightOutlined />
 						</Link>
 					</div>
 				</div>

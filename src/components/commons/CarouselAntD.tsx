@@ -59,7 +59,7 @@ export default function CarouselAntD() {
 	}
 
 	return (
-		<div className="container mx-auto mt-2 px-4">
+		<div className="container mx-auto px-4 mb-8">
 			<Carousel
 				autoplay={{ dotDuration: true }}
 				infinite
