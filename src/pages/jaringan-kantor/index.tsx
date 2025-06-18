@@ -14,10 +14,10 @@ export default function JaringanKantor() {
 				</Card>
 				<div className="flex justify-between text-base">
 					<Link
-						href="/profil"
+						href="/visi-misi"
 						className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors duration-300">
 						<LeftOutlined />
-						Kembali: Struktur Organisasi
+						Kembali: Visi & Misi
 					</Link>
 				</div>
 			</SectionLayout>

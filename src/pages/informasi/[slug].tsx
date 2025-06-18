@@ -55,7 +55,7 @@ export default function Page() {
 					<>
 						{/* Breadcrumb - Don't show for 404 pages */}
 						{!isNotFound && (
-							<div className="mb-4">
+							<div className="">
 								<Breadcrumb
 									items={[
 										{

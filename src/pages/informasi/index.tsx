@@ -5,7 +5,7 @@ import InformationContainer from "@/components/informations/InformationContainer
 export default function Informasi() {
 	return (
 		<MainLayout>
-			<SectionLayout title="Berita & Pengumuman">
+			<SectionLayout title="Informasi">
 				<InformationContainer />
 			</SectionLayout>
 		</MainLayout>

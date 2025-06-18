@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -18,59 +19,72 @@ L.Icon.Default.mergeOptions({
 	shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
 });
 
+interface Office {
+	id: string;
+	name: string;
+	address: string;
+	latitude: string;
+	longitude: string;
+	map_link: string;
+}
+
 export default function MapClient() {
+	const [offices, setOffices] = useState<Office[]>([]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await fetch(
+					`${process.env.NEXT_PUBLIC_API_URL}/api/v1/offices?limit=50`
+				);
+				const json = await res.json();
+				if (json.data) {
+					setOffices(json.data);
+				}
+			} catch (error) {
+				console.error("Gagal mengambil data kantor:", error);
+			}
+		};
+
+		fetchData();
+	}, []);
+
 	return (
-		<div className="container  mx-auto sm:w-full md:w-3/4 lg:w-1/2 aspect-video px-4 mb-8">
+		<div className="container mx-auto sm:w-full md:w-3/4 lg:w-1/2 aspect-video px-4 mb-8">
 			<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-8">
 				Peta Lokasi Kantor Bank Wonosobo
 			</h2>
 			<MapContainer
-				center={[-7.370330100511285, 109.90063938127236]}
+				center={[-7.3703301, 109.9006393]}
 				zoom={12}
 				scrollWheelZoom={true}
 				className="w-full h-full rounded-xl z-0">
 				<TileLayer
-					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 				/>
 
-				{/* Marker 1 */}
-				<Marker position={[-7.370330100511285, 109.90063938127236]}>
-					<Popup>
-						PD BPR Bank Wonosobo <br /> Jl. A. Yani No.rt 03 160, Pensil Sari,
-						Wonosobo Timur{" "}
-						<span>
+				{offices.map((office) => (
+					<Marker
+						key={office.id}
+						position={[
+							parseFloat(office.longitude),
+							parseFloat(office.latitude),
+						]}>
+						<Popup>
+							<strong>{office.name}</strong>
+							<br />
+							{office.address}
+							<br />
 							<a
-								href="https://maps.app.goo.gl/MTUSdeis6KGB9DQ96"
-								target="_blank">
+								href={office.map_link}
+								target="_blank"
+								rel="noopener noreferrer">
 								Lihat di Maps
 							</a>
-						</span>
-					</Popup>
-				</Marker>
-
-				{/* Marker 2 */}
-				<Marker position={[-7.3277158054929155, 109.90243851425303]}>
-					<Popup>
-						Kantor kas Mojotengah <br /> Jalan Raya Kalibeber Km 3, Mojotengah,
-						Kalibeber, Kec. Mojotengah
-					</Popup>
-				</Marker>
-
-				{/* Marker 3 */}
-				<Marker position={[-7.411556831536904, 109.88567838926883]}>
-					<Popup>
-						Bpr Bank Wonosobo <br /> Jl. Raya Brengkok - Banjarnegara 32,
-						Kradenan, Selomerto, Kec. Selomerto{" "}
-						<span>
-							<a
-								href="https://maps.app.goo.gl/RphhddnX6uPNQJUn8"
-								target="_blank">
-								Lihat di Maps
-							</a>
-						</span>
-					</Popup>
-				</Marker>
+						</Popup>
+					</Marker>
+				))}
 			</MapContainer>
 		</div>
 	);

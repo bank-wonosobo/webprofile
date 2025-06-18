@@ -191,7 +191,7 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 					showSizeChanger: true,
 					showQuickJumper: true,
 					showTotal: (total, range) =>
-						`${range[0]}-${range[1]} dari ${total} laporan`,
+						`Menampilkan ${range[0]}-${range[1]} dari ${total} laporan`,
 					onChange: (page, pageSize) => {
 						fetchDataWithPagination(page, pageSize || 10);
 					},

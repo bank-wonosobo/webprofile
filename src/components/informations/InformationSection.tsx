@@ -5,7 +5,7 @@ const InformationSection: React.FC = () => {
 		<section className="w-full bg-[#f0f5f8]">
 			<div className="mx-auto container mb-8 px-4 py-8">
 				<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-8">
-					Berita & Pengumuman
+					Informasi
 				</h2>
 				<InformationContainer />
 			</div>
