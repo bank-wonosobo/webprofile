@@ -1,12 +1,14 @@
 import MainLayout from "@/components/app/MainLayout";
 import SectionLayout from "@/components/app/SectionLayout";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 export default function VisiMisi() {
 	return (
 		<MainLayout>
 			<SectionLayout title="Visi & Misi">
 				<div className="flex justify-center items-center flex-col">
-					<div className="mb-8">
+					<div className="mb-8 max-w-4xl ">
 						<h2 className="text-2xl font-bold  mb-2 text-center text-secondary">
 							Visi PT BPR BANK WONOSOBO (PERSERODA)
 						</h2>
@@ -15,7 +17,7 @@ export default function VisiMisi() {
 						</p>
 					</div>
 
-					<div>
+					<div className="max-w-4xl font-light">
 						<h2 className="text-2xl font-bold  mb-4 text-center text-secondary">
 							Misi - misi
 						</h2>
@@ -66,6 +68,20 @@ export default function VisiMisi() {
 								</ul>
 							</li>
 						</ol>
+						<div className="flex justify-between mt-6 text-base">
+							<Link
+								href="/struktur-organisasi"
+								className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors duration-300">
+								<LeftOutlined />
+								Kembali: Struktur Organisasi
+							</Link>
+							<Link
+								href="/jaringan-kantor"
+								className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors duration-300">
+								Lanjut: Jaringan Kantor
+								<RightOutlined />
+							</Link>
+						</div>
 					</div>
 				</div>
 			</SectionLayout>

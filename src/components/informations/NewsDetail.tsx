@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import getBeritaBySlug from "@/data/berita-slug";
 import Link from "next/link";
+// import Image from "next/image";
 
 interface NewsItem {
 	id: string;
@@ -33,7 +34,7 @@ const formatDate = (dateString: string): string => {
 };
 
 const LoadingSkeleton = () => (
-	<div className="mx-auto container">
+	<div className="mx-auto container max-w-4xl">
 		<div className="animate-pulse">
 			<div className="h-8 bg-gray-300 rounded mb-4 w-3/4"></div>
 			<div className="h-4 bg-gray-300 rounded mb-2 w-1/2"></div>
@@ -52,6 +53,11 @@ const NewsContent = ({ news }: { news: NewsItem }) => (
 	<div className="mx-auto container">
 		<article className="max-w-4xl mx-auto mb-8">
 			{news.image_url && (
+				// <Image
+				// 	src={news.image_url}
+				// 	alt={news.title}
+				// 	className="w-full h-auto mb-4 rounded-lg"
+				// />
 				<img
 					src={news.image_url}
 					alt={news.title}

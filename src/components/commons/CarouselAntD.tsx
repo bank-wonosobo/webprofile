@@ -2,6 +2,7 @@
 import getBanners from "@/data/banners";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { Carousel } from "antd";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface CarouselProps {
@@ -12,8 +13,6 @@ interface CarouselProps {
 
 type ArrowProps = {
 	onClick?: () => void;
-	className?: string;
-	style?: React.CSSProperties;
 };
 
 export const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
@@ -27,7 +26,7 @@ export const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => (
 export const NextArrow: React.FC<ArrowProps> = ({ onClick }) => (
 	<div
 		onClick={onClick}
-		className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/80 cursor-pointer transition-colors duration-500">
+		className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 hover:bg-black/80 cursor-pointer text-white transition-colors duration-500">
 		<RightOutlined className="text-base" />
 	</div>
 );
@@ -52,36 +51,45 @@ export default function CarouselAntD() {
 
 	if (loading) {
 		return (
-			<div className="container aspect-video animate-pulse mx-auto mt-2 px-4 rounded-xl">
-				<div className="bg-gray-200 w-full h-full rounded-xl"></div>
+			<div className="container mx-auto px-4 mt-4">
+				<div className="relative w-full aspect-[16/6] overflow-hidden rounded-xl bg-gray-200 mb-8 animate-pulse">
+					<div className="absolute inset-0" />
+				</div>
 			</div>
 		);
 	}
 
 	return (
-		<div className="container mx-auto mt-2 px-4">
+		<div className="container mx-auto px-4 mb-8">
 			<Carousel
-				effect="fade"
 				autoplay={{ dotDuration: true }}
 				infinite
 				autoplaySpeed={5000}
 				draggable
-				arrows={true}
+				arrows
 				prevArrow={<PrevArrow />}
 				nextArrow={<NextArrow />}
 				dots>
 				{banners.map((banner) => (
-					<img
-						key={banner.id}
-						src={banner.image_url}
-						className="w-full rounded-xl"
-						alt={banner.name}
-					/>
+					<div key={banner.id} className="overflow-hidden rounded-xl">
+						<Image
+							src={banner.image_url}
+							alt={banner.name}
+							width={1600}
+							height={600}
+							className="w-full h-auto rounded-xl transition-opacity duration-500"
+							priority
+						/>
+					</div>
 				))}
-				<img
+				<Image
 					src="/banner-kurban.png"
-					alt="Banner"
-					className="rounded-lg w-full transition-transform duration-300 ease-in-out group-hover:scale-110"
+					alt="Banner Kurban"
+					width={1600}
+					height={600}
+					sizes="100vw"
+					className="object-cover rounded-xl transition-transform duration-300 ease-in-out"
+					priority
 				/>
 			</Carousel>
 		</div>

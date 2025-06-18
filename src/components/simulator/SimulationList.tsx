@@ -2,12 +2,12 @@ import SimulatorDeposit from "./SimulatorDeposit";
 
 const SimulatorList: React.FC = () => {
 	return (
-		<section className="w-full py-10 bg-white">
-			<div className="mx-auto container">
-				<h2 className="text-black font-bold text-center text-2xl lg:text-3xl ">
+		<section className="w-full bg-white mb-8">
+			<div className="mx-auto container py-8 px-4">
+				<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-8">
 					Simulasi Kredit & Depoito
 				</h2>
-				<div className="w-full mt-8 flex justify-around items-center gap-y-4 md:items-end flex-col lg:flex-row ">
+				<div className="w-full flex justify-around items-center md:items-end flex-col lg:flex-row ">
 					<SimulatorDeposit />
 
 					<div className="hidden lg:block">

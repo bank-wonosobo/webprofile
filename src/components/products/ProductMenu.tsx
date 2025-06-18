@@ -28,12 +28,12 @@ const ProductMenu: React.FC = () => {
 		},
 	];
 	return (
-		<section className="w-full pt-10 pb-10 ">
-			<div className="mx-auto container flex flex-col items-center justify-center ">
-				<h2 className="text-black font-bold text-center text-2xl lg:text-3xl">
+		<section className="w-full mb-8">
+			<div className="mx-auto container flex flex-col items-center justify-center px-4">
+				<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-8">
 					Produk & Layanan Kami
 				</h2>
-				<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 m-4 lg:mt-10 ">
+				<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 ">
 					{products.map((product) => (
 						<Link
 							key={product.name}

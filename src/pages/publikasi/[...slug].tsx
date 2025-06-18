@@ -36,7 +36,7 @@ export default function Page() {
 		<MainLayout>
 			<SectionLayout title={pageTitle}>
 				{/* Breadcrumb */}
-				<div className="mb-4">
+				<div className="">
 					<Breadcrumb
 						items={[
 							{
@@ -64,16 +64,16 @@ export default function Page() {
 					/>
 				</div>
 
-				<Card className="shadow-sm">
+				<Card className="">
 					<div className="mb-6">
 						<div className="flex items-center justify-between flex-wrap gap-4">
 							<div>
-								<h2 className="text-xl font-semibold text-gray-800 mb-2">
+								<h2 className="text-lg font-semibold text-gray-800 ">
+									{" "}
+									Daftar
 									{pageTitle}
 								</h2>
-								<p className="text-gray-600">
-									Daftar laporan yang tersedia untuk publikasi
-								</p>
+								<p className="text-gray-600"></p>
 							</div>
 						</div>
 					</div>
