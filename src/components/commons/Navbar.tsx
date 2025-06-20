@@ -9,6 +9,7 @@ import { TbCreditCardPay, TbMenu4, TbPigMoney } from "react-icons/tb";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Dropdown from "./Dropdown";
 import getLaporanByType from "@/data/tipe-laporan";
+import { UngroupOutlined } from "@ant-design/icons";
 
 interface LaporanTypeItem {
 	id: number;
@@ -114,6 +115,14 @@ const Navbar: React.FC = () => {
 						</li>
 						<li className="flex justify-between items-center hover:border-b-[3px] border-b-secondary">
 							<Dropdown name="Produk & Layanan">
+								<Link href={"/produk-layanan"}>
+									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer flex flex-col">
+										<div className="flex gap-2 font-semibold">
+											<UngroupOutlined size={18} className="text-primary" />
+											Semua Produk & Layanan
+										</div>
+									</li>
+								</Link>
 								<Link href={"/tabungan"}>
 									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer flex flex-col">
 										<div className="flex gap-2 font-semibold">
@@ -167,6 +176,11 @@ const Navbar: React.FC = () => {
 						</Link>
 						<li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative">
 							<Dropdown name="Publikasi">
+								<Link href={"/publikasi"}>
+									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
+										Semua Publikasi
+									</li>
+								</Link>
 								{publikasi.map((item) => (
 									<Link
 										key={item.id}
@@ -271,6 +285,19 @@ const Navbar: React.FC = () => {
 								{mobileMenuOpen.products && (
 									<ul className="pl-4 mt-2 space-y-2">
 										<li className="py-1">
+											<Link
+												href={"/produk-layanan"}
+												onClick={() => setIsOpen(false)}>
+												<div className="flex items-center">
+													<UngroupOutlined
+														size={16}
+														className="text-primary mr-2"
+													/>
+													Semua Produk & Layanan
+												</div>
+											</Link>
+										</li>
+										<li className="py-1">
 											<Link href={"/tabungan"} onClick={() => setIsOpen(false)}>
 												<div className="flex items-center">
 													<TbPigMoney size={16} className="text-primary mr-2" />
@@ -339,6 +366,13 @@ const Navbar: React.FC = () => {
 								</div>
 								{mobileMenuOpen.publications && (
 									<ul className="pl-4 mt-2 space-y-2">
+										<li className="py-1">
+											<Link
+												href={"/publikasi"}
+												onClick={() => setIsOpen(false)}>
+												Semua Publikasi
+											</Link>
+										</li>
 										{publikasi.map((item) => (
 											<li key={item.id} className="py-1">
 												<Link

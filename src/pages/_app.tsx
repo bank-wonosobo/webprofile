@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import { ConfigProvider } from "antd";
 import type { AppProps } from "next/app";
 import { Noto_Sans } from "next/font/google";
 
@@ -11,7 +12,11 @@ const opensans = Noto_Sans({
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<main className={opensans.className}>
-			<Component {...pageProps} />
+			<ConfigProvider theme={{ token: { colorPrimary: "#d2b56b" } }}>
+				<div className="">
+					<Component {...pageProps} />
+				</div>
+			</ConfigProvider>
 		</main>
 	);
 }

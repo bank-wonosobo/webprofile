@@ -15,7 +15,12 @@ const nextConfig: NextConfig = {
 	],
 	reactStrictMode: true,
 	images: {
-		domains: ["is3.cloudhost.id"],
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "is3.cloudhost.id",
+			},
+		],
 	},
 };
 
