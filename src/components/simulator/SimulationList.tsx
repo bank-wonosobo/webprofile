@@ -7,11 +7,11 @@ const SimulatorList: React.FC = () => {
 				<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-8">
 					Simulasi Kredit & Depoito
 				</h2>
-				<div className="w-full flex justify-around items-center md:items-end flex-col lg:flex-row ">
+				<div className="w-full flex justify-around items-center flex-col lg:flex-row ">
 					<SimulatorDeposit />
 
 					<div className="hidden lg:block">
-						<img src="investment2.svg" width={700} />
+						<img src="investment.svg" width={600} />
 					</div>
 				</div>
 			</div>

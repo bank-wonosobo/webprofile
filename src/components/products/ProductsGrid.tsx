@@ -4,23 +4,26 @@ import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { LuFiles } from "react-icons/lu";
 import { useEffect, useState } from "react";
-import getLaporanByType from "@/data/tipe-laporan";
+import getProdukLayanan from "@/data/produk-layanan";
 
-interface LaporanTypeItem {
-	id: number;
+interface ProdukLayananItem {
+	id: string;
 	name: string;
 	description: string;
+	image_url: string;
+	tagline: string;
+	product_category: string;
 }
 
-const LaporanPublikasiCards: React.FC = () => {
-	const [publikasi, setPublikasi] = useState<LaporanTypeItem[]>([]);
+const ProductsGrid: React.FC = () => {
+	const [produkLayanan, setProdukLayanan] = useState<ProdukLayananItem[]>([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await getLaporanByType();
-				setPublikasi(response.data || []);
+				const response = await getProdukLayanan();
+				setProdukLayanan(response.data || []);
 			} catch (error) {
 				console.error("Error fetching data:", error);
 			} finally {
@@ -30,10 +33,6 @@ const LaporanPublikasiCards: React.FC = () => {
 
 		fetchData();
 	}, []);
-
-	// const generateHref = (name: string) => {
-	// 	return `/${name.toLowerCase().replace(/\s+/g, "-")}`;
-	// };
 
 	if (loading) {
 		return (
@@ -59,22 +58,23 @@ const LaporanPublikasiCards: React.FC = () => {
 		<section className="w-full">
 			<div className="mx-auto container">
 				<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 m-4">
-					{publikasi.map((loporan) => (
+					{produkLayanan.map((item) => (
 						<Link
-							key={loporan.id}
-							href={`/publikasi/${loporan.id}/${loporan.name
-								.toLowerCase()
-								.replace(/\s+/g, "-")}`}
+							key={item.id}
+							// href={`/publikasi/${item.id}/${item.name
+							// 	.toLowerCase()
+							// 	.replace(/\s+/g, "-")}`}
+							href={"#"}
 							className="max-w-[350px] p-4 lg:p-8 bg-white rounded-xl hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer border border-black/5">
 							<div className="bg-secondary/15 p-6 inline-block rounded-[30px]">
 								<LuFiles size={30} className="text-primary" />
 							</div>
 							<h3 className="mt-4 lg:mt-6 font-bold text-xl text-primary">
-								{loporan.name}
+								{item.name}
 							</h3>
-							{loporan.description && (
-								<p className="text-sm text-gray-600 mt-2 line-clamp-2 ">
-									{loporan.description}
+							{item.description && (
+								<p className="text-sm text-gray-600 mt-2 line-clamp-2">
+									{item.description}
 								</p>
 							)}
 							<div className="text-sm mt-4 flex items-center gap-x-2 hover:text-secondary text-primary font-normal">
@@ -83,7 +83,7 @@ const LaporanPublikasiCards: React.FC = () => {
 						</Link>
 					))}
 				</div>
-				{publikasi.length === 0 && !loading && (
+				{produkLayanan.length === 0 && !loading && (
 					<div className="text-center p-8">
 						<p className="text-gray-500">Tidak ada data laporan tersedia</p>
 					</div>
@@ -93,4 +93,4 @@ const LaporanPublikasiCards: React.FC = () => {
 	);
 };
 
-export default LaporanPublikasiCards;
+export default ProductsGrid;

@@ -1,21 +1,24 @@
 import MainLayout from "@/components/app/MainLayout";
-import PageTitle from "@/components/commons/PageTitle";
+import SectionLayout from "@/components/app/SectionLayout";
+import Image from "next/image";
 
 export default function Karir() {
 	return (
 		<MainLayout>
-			<PageTitle title="Karir" />
-			<section className="container mx-auto ">
-				<div className="flex flex-col gap-y-4 mx-4">
-					<h1 className="text-3xl font-bold">Profil Bank Wonosobo</h1>
-					<p className="text-sm text-slate-500">
-						BPR Bank Wonosobo adalah lembaga keuangan yang memberikan layanan
-						perbankan kepada masyarakat di Kabupaten Wonosobo. Kami berkomitmen
-						untuk memberikan layanan terbaik dan membantu masyarakat dalam
-						mewujudkan impian finansial mereka.
+			<SectionLayout title="Karir">
+				<div className="flex flex-col items-center justify-center text-center min-h-[50vh]">
+					<Image
+						src="/job-hunt.svg"
+						alt="Karir"
+						width={200}
+						height={200}
+						className="mb-4"
+					/>
+					<p className="text-base text-gray-600">
+						Lowongan karir belum tersedia saat ini.
 					</p>
 				</div>
-			</section>
+			</SectionLayout>
 		</MainLayout>
 	);
 }

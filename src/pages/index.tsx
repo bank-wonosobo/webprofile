@@ -18,6 +18,7 @@ export default function Home() {
 			<Head>
 				<title>PT BPR Bank Wonosobo - Home Page</title>
 			</Head>
+
 			<MainLayout>
 				<Hero />
 				{/* <BWCarousel /> */}
