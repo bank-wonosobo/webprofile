@@ -17,7 +17,7 @@ export default function JaringanKantor() {
 						href="/visi-misi"
 						className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors duration-300">
 						<LeftOutlined />
-						Kembali: Visi & Misi
+						Visi & Misi
 					</Link>
 				</div>
 			</SectionLayout>

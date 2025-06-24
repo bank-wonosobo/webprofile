@@ -20,17 +20,17 @@ export default function StrukturOrganisasi() {
 						alt="Struktur Organisasi"
 						className="w-full my-4 "
 					/>
-					<div className="flex justify-between mt-6 text-base">
+					<div className="flex justify-between mt-6 border-t border-gray-200 pt-6 mb-6">
 						<Link
 							href="/profil"
 							className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors duration-300">
 							<LeftOutlined />
-							Kembali: Profil
+							Profil
 						</Link>
 						<Link
 							href="/visi-misi"
 							className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors duration-300">
-							Lanjut: Visi & Misi
+							Visi & Misi
 							<RightOutlined />
 						</Link>
 					</div>

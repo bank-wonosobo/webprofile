@@ -1,12 +1,11 @@
 import MainLayout from "@/components/app/MainLayout";
 import SectionLayout from "@/components/app/SectionLayout";
-import ProductsGrid from "@/components/products/ProductsGrid";
 
-export default function ProdukLayanan() {
+export default function LaporPelanggaran() {
 	return (
 		<MainLayout>
-			<SectionLayout title="Produk & Layanan">
-				<ProductsGrid />
+			<SectionLayout title="Lapor Pelanggaran">
+				<p>Lapor Pelanggaran</p>
 			</SectionLayout>
 		</MainLayout>
 	);

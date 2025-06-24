@@ -269,11 +269,11 @@ export default function Profile() {
 							</p>
 						</ol>
 					</ol>
-					<div className="text-right mt-6">
+					<div className="text-right mt-6 border-t border-gray-200 pt-6">
 						<Link
 							href="/struktur-organisasi"
 							className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-300 gap-1">
-							Lanjut: Struktur Organisasi <RightOutlined />
+							Struktur Organisasi <RightOutlined />
 						</Link>
 					</div>
 				</div>
