@@ -68,17 +68,17 @@ export default function VisiMisi() {
 								</ul>
 							</li>
 						</ol>
-						<div className="flex justify-between mt-6 text-base">
+						<div className="flex justify-between mt-6 text-base text-right border-t border-gray-200 pt-6">
 							<Link
 								href="/struktur-organisasi"
 								className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors duration-300">
 								<LeftOutlined />
-								Kembali: Struktur Organisasi
+								Struktur Organisasi
 							</Link>
 							<Link
 								href="/jaringan-kantor"
 								className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 transition-colors duration-300">
-								Lanjut: Jaringan Kantor
+								Jaringan Kantor
 								<RightOutlined />
 							</Link>
 						</div>

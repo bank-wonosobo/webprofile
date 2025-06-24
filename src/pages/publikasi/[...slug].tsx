@@ -4,6 +4,7 @@ import TabelLaporan from "@/components/publikasi/TabelLaporan";
 import { Card, Breadcrumb } from "antd";
 import { HomeOutlined, FileTextOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Page() {
 	const router = useRouter();
@@ -40,21 +41,23 @@ export default function Page() {
 					<Breadcrumb
 						items={[
 							{
-								href: "/",
 								title: (
-									<div className="flex items-center gap-1">
-										<HomeOutlined />
-										<span>Beranda</span>
-									</div>
+									<Link href="/">
+										<div className="flex items-center gap-1">
+											<HomeOutlined />
+											<span>Beranda</span>
+										</div>
+									</Link>
 								),
 							},
 							{
-								href: "/publikasi",
 								title: (
-									<div className="flex items-center gap-1">
-										<FileTextOutlined />
-										<span>Publikasi</span>
-									</div>
+									<Link href={"/publikasi"}>
+										<div className="flex items-center gap-1">
+											<FileTextOutlined />
+											<span>Publikasi</span>
+										</div>
+									</Link>
 								),
 							},
 							{

@@ -5,6 +5,7 @@ import NewsDetail from "@/components/informations/NewsDetail";
 import { useRouter } from "next/router";
 import { Breadcrumb } from "antd";
 import { HomeOutlined, FileTextOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 export default function Page() {
 	const router = useRouter();
@@ -59,21 +60,23 @@ export default function Page() {
 								<Breadcrumb
 									items={[
 										{
-											href: "/",
 											title: (
-												<div className="flex items-center gap-1">
-													<HomeOutlined />
-													<span>Beranda</span>
-												</div>
+												<Link href="/">
+													<div className="flex items-center gap-1">
+														<HomeOutlined />
+														<span>Beranda</span>
+													</div>
+												</Link>
 											),
 										},
 										{
-											href: "/informasi",
 											title: (
-												<div className="flex items-center gap-1">
-													<FileTextOutlined />
-													<span>Informasi</span>
-												</div>
+												<Link href="/informasi">
+													<div className="flex items-center gap-1">
+														<FileTextOutlined />
+														<span>Informasi</span>
+													</div>
+												</Link>
 											),
 										},
 										{

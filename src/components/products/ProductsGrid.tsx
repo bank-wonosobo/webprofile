@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
-import { LuFiles } from "react-icons/lu";
 import { useEffect, useState } from "react";
 import getProdukLayanan from "@/data/produk-layanan";
 
@@ -15,14 +14,19 @@ interface ProdukLayananItem {
 	product_category: string;
 }
 
-const ProductsGrid: React.FC = () => {
+interface ProductsGridProps {
+	category?: string;
+	link?: string;
+}
+
+const ProductsGrid: React.FC<ProductsGridProps> = ({ category, link }) => {
 	const [produkLayanan, setProdukLayanan] = useState<ProdukLayananItem[]>([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await getProdukLayanan();
+				const response = await getProdukLayanan(category ?? "");
 				setProdukLayanan(response.data || []);
 			} catch (error) {
 				console.error("Error fetching data:", error);
@@ -38,7 +42,7 @@ const ProductsGrid: React.FC = () => {
 		return (
 			<section className="w-full">
 				<div className="mx-auto container">
-					<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 m-4">
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-4 gap-4 m-4">
 						{[...Array(8)].map((_, index) => (
 							<div
 								key={index}
@@ -56,36 +60,41 @@ const ProductsGrid: React.FC = () => {
 
 	return (
 		<section className="w-full">
-			<div className="mx-auto container">
-				<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 m-4">
+			<div className="mx-auto container flex flex-col items-center">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 m-auto">
 					{produkLayanan.map((item) => (
 						<Link
 							key={item.id}
-							// href={`/publikasi/${item.id}/${item.name
-							// 	.toLowerCase()
-							// 	.replace(/\s+/g, "-")}`}
-							href={"#"}
-							className="max-w-[350px] p-4 lg:p-8 bg-white rounded-xl hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer border border-black/5">
-							<div className="bg-secondary/15 p-6 inline-block rounded-[30px]">
-								<LuFiles size={30} className="text-primary" />
+							href={`${link}/${item.id}`}
+							className="max-w-[350px] bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all duration-500 cursor-pointer border border-black/5 hover:-translate-y-2">
+							{/* Bagian Gambar + Overlay Text */}
+							<div className="relative h-56">
+								<img
+									src={item.image_url}
+									alt={item.name}
+									className="w-full h-full object-cover"
+								/>
+								<div className="absolute inset-0 bg-black/40 px-4 py-3 flex flex-col justify-end text-white">
+									<h3 className="text-lg font-semibold">{item.name}</h3>
+									<p className="text-sm">{item.tagline}</p>
+								</div>
 							</div>
-							<h3 className="mt-4 lg:mt-6 font-bold text-xl text-primary">
-								{item.name}
-							</h3>
-							{item.description && (
-								<p className="text-sm text-gray-600 mt-2 line-clamp-2">
-									{item.description}
-								</p>
-							)}
-							<div className="text-sm mt-4 flex items-center gap-x-2 hover:text-secondary text-primary font-normal">
-								Selengkapnya <FaArrowRight />
+							<div className="p-4">
+								{item.description && (
+									<p className="text-sm text-gray-600 mt-2 line-clamp-2 ">
+										{item.description}
+									</p>
+								)}
+								<div className="text-sm mt-4 flex items-center gap-x-2 hover:text-secondary text-primary font-normal">
+									Selengkapnya <FaArrowRight />
+								</div>
 							</div>
 						</Link>
 					))}
 				</div>
 				{produkLayanan.length === 0 && !loading && (
 					<div className="text-center p-8">
-						<p className="text-gray-500">Tidak ada data laporan tersedia</p>
+						<p className="text-gray-500">Tidak ada data yang tersedia</p>
 					</div>
 				)}
 			</div>

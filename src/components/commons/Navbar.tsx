@@ -9,7 +9,6 @@ import { TbCreditCardPay, TbMenu4, TbPigMoney } from "react-icons/tb";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Dropdown from "./Dropdown";
 import getLaporanByType from "@/data/tipe-laporan";
-import { UngroupOutlined } from "@ant-design/icons";
 
 interface LaporanTypeItem {
 	id: number;
@@ -115,14 +114,6 @@ const Navbar: React.FC = () => {
 						</li>
 						<li className="flex justify-between items-center hover:border-b-[3px] border-b-secondary">
 							<Dropdown name="Produk & Layanan">
-								<Link href={"/produk-layanan"}>
-									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer flex flex-col">
-										<div className="flex gap-2 font-semibold">
-											<UngroupOutlined size={18} className="text-primary" />
-											Semua Produk & Layanan
-										</div>
-									</li>
-								</Link>
 								<Link href={"/tabungan"}>
 									<li className="px-4 py-3 hover:bg-gray-100 cursor-pointer flex flex-col">
 										<div className="flex gap-2 font-semibold">
@@ -194,17 +185,17 @@ const Navbar: React.FC = () => {
 								))}
 							</Dropdown>
 						</li>
-						<Link href={"lelang"}>
+						<Link href={"/lelang"}>
 							<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
 								Lelang
 							</li>
 						</Link>
-						<Link href={"karir"}>
+						<Link href={"/karir"}>
 							<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
 								Karir
 							</li>
 						</Link>
-						<Link href={"lapor-pelanggaran"}>
+						<Link href={"/lapor-pelanggaran"}>
 							<li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
 								Lapor Pelanggaran
 							</li>
@@ -284,19 +275,6 @@ const Navbar: React.FC = () => {
 								</div>
 								{mobileMenuOpen.products && (
 									<ul className="pl-4 mt-2 space-y-2">
-										<li className="py-1">
-											<Link
-												href={"/produk-layanan"}
-												onClick={() => setIsOpen(false)}>
-												<div className="flex items-center">
-													<UngroupOutlined
-														size={16}
-														className="text-primary mr-2"
-													/>
-													Semua Produk & Layanan
-												</div>
-											</Link>
-										</li>
 										<li className="py-1">
 											<Link href={"/tabungan"} onClick={() => setIsOpen(false)}>
 												<div className="flex items-center">
@@ -389,20 +367,20 @@ const Navbar: React.FC = () => {
 							</li>
 
 							<li className="py-2 px-4 border-b border-gray-100">
-								<Link href={"lelang"} onClick={() => setIsOpen(false)}>
+								<Link href={"/lelang"} onClick={() => setIsOpen(false)}>
 									Lelang
 								</Link>
 							</li>
 
 							<li className="py-2 px-4 border-b border-gray-100">
-								<Link href={"karir"} onClick={() => setIsOpen(false)}>
+								<Link href={"/karir"} onClick={() => setIsOpen(false)}>
 									Karir
 								</Link>
 							</li>
 
 							<li className="py-2 px-4 border-b border-gray-100">
 								<Link
-									href={"lapor-pelanggaran"}
+									href={"/lapor-pelanggaran"}
 									onClick={() => setIsOpen(false)}>
 									Lapor Pelanggaran
 								</Link>
