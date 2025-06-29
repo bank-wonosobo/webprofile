@@ -36,7 +36,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({ category, link }) => {
 		};
 
 		fetchData();
-	}, []);
+	}, [category]);
 
 	if (loading) {
 		return (

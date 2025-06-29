@@ -16,6 +16,11 @@
   */
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+	color: var(--foreground);
+	background: var(--background);
+}
+
+/* Di globals.css atau app.css */
+.ant-form-item {
+	margin-bottom: 8px !important;
 }
