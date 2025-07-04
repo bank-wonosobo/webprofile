@@ -34,7 +34,7 @@ jobs:
       # 🐳 Docker: Build image
       - name: Build Docker image
         run: |
-          docker build NEXT_PUBLIC_API_URL=${{ vars.API_URL }} -t ghcr.io/${{ github.repository }}:staging .
+          docker build --build-arg NEXT_PUBLIC_API_URL=${{ vars.API_URL }} -t ghcr.io/${{ github.repository }}:staging .
 
       # 🚀 Docker: Push image
       - name: Push Docker image
