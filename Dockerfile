@@ -10,9 +10,11 @@ RUN npm install
 
 # Copy app files
 COPY . .
+# 1️⃣ Definisikan ARG
+ARG NEXT_PUBLIC_API_URL
 
-# Copy .env
-COPY .env .env
+# # 2️⃣ Set ENV dari ARG
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
 # Build the app
 RUN npm run build
