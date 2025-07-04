@@ -1,12 +1,22 @@
 import Link from "next/link";
 import { FiMail, FiPhone } from "react-icons/fi";
+import {
+	YoutubeOutlined,
+	InstagramOutlined,
+	TikTokOutlined,
+} from "@ant-design/icons";
 
 const Footer: React.FC = () => {
 	return (
 		<footer className="bg-gray-900 text-gray-300 p-4 py-8">
-			<div className="container mx-auto">
-				<img src="/static/logo-bw-white.svg" alt="" className="w-40" />
+			<div className="container mx-auto mb-6">
+				<img
+					src="/static/logo-bw-white.svg"
+					alt="Logo Bank Wonosobo"
+					className="w-40"
+				/>
 			</div>
+
 			<div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
 				<div>
 					<h3 className="text-white font-semibold mb-2">Kantor Pusat</h3>
@@ -34,18 +44,43 @@ const Footer: React.FC = () => {
 							admin@bankwonosobo.co.id
 						</a>
 					</p>
-					<p>&#x1F4F2; (0286) 321293</p>
+					<p>📱 (0286) 321293</p>
 				</div>
 
 				<div>
 					<h3 className="text-white font-semibold mb-2">Media Sosial</h3>
-					<p>&#xf09a; GoodLife BankWonosobo</p>
-					<p>&#xf167; Solusi BankWonosobo</p>
-					<p>&#xf16d; @goodlifeBankWonosobo</p>
-					<p>&#xf099; @BankBankWonosobo</p>
-					<a href="#" className="text-blue-400 hover:underline">
-						Lihat Semua Media Sosial
-					</a>
+					<ul className="space-y-2">
+						<li className="flex items-center gap-2">
+							<YoutubeOutlined />
+							<a
+								href="https://www.youtube.com/@bankwonosobo3617"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="hover:underline text-blue-400">
+								YouTube BankWonosobo
+							</a>
+						</li>
+						<li className="flex items-center gap-2">
+							<InstagramOutlined />
+							<a
+								href="https://www.instagram.com/bankwonosobo/"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="hover:underline text-blue-400">
+								Instagram BankWonosobo
+							</a>
+						</li>
+						<li className="flex items-center gap-2">
+							<TikTokOutlined />
+							<a
+								href="https://www.tiktok.com/@bank.wonosobo"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="hover:underline text-blue-400">
+								TikTok BankWonosobo
+							</a>
+						</li>
+					</ul>
 				</div>
 
 				<div>
@@ -64,11 +99,11 @@ const Footer: React.FC = () => {
 						This site is protected by reCAPTCHA and the Google{" "}
 						<a href="#" className="text-blue-400 hover:underline">
 							Privacy Policy
-						</a>
-						and
+						</a>{" "}
+						and{" "}
 						<a href="#" className="text-blue-400 hover:underline">
 							Terms of Service
-						</a>
+						</a>{" "}
 						apply.
 					</p>
 				</div>
