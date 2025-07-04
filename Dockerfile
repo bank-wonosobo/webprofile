@@ -29,6 +29,9 @@ COPY --from=base /app/public ./public
 COPY --from=base /app/node_modules ./node_modules
 
 # Environment variable for Next.js
+# Dockerfile
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 ENV NODE_ENV=production
 
 # Expose the port the app runs on
