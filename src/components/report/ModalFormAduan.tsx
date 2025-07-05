@@ -13,6 +13,10 @@ import {
 import { UploadOutlined } from "@ant-design/icons";
 import moment from "moment";
 import type { UploadFile } from "antd/es/upload/interface";
+import getTipePelanggaran from "@/data/tipe-pelanggaran";
+import { useEffect, useState } from "react";
+import { postPelanggaran } from "@/data/post-pelanggaran";
+import { toast } from "sonner";
 
 const { TextArea } = Input;
 
@@ -26,6 +30,12 @@ interface AduanFormData {
 	lampiran?: UploadFile[];
 	nama_pelapor?: string;
 	hp_pelapor?: string;
+	email_pelapor?: string;
+}
+
+interface TipePelanggaran {
+	id: string;
+	name: string;
 }
 
 interface ModalFormAduanProps {
@@ -35,9 +45,55 @@ interface ModalFormAduanProps {
 
 const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 	const [form] = Form.useForm<AduanFormData>();
+	const [tipePelanggaran, setTipePelanggaran] = useState<TipePelanggaran[]>([]);
+	const [loading, setLoading] = useState(false);
 
-	const handleSubmit = (values: AduanFormData) => {
-		console.log("Form values:", values);
+	useEffect(() => {
+		const fetchTipePelanggaran = async () => {
+			try {
+				const response = await getTipePelanggaran();
+				setTipePelanggaran(response.data || []);
+			} catch (error) {
+				console.error("Error fetching tipe pelanggaran:", error);
+			}
+		};
+
+		fetchTipePelanggaran();
+	}, []);
+
+	const handleSubmit = async (values: AduanFormData) => {
+		setLoading(true);
+		try {
+			const insident_time = moment
+				.utc(
+					values.tanggal.format("YYYY-MM-DD") +
+						" " +
+						values.waktu.format("HH:mm")
+				)
+				.toISOString();
+
+			const evidence_file = values.lampiran?.[0]?.originFileObj;
+
+			await postPelanggaran({
+				reported_name: values.nama_terlapor,
+				insident_location: values.lokasi,
+				insident_time,
+				description: values.uraian,
+				reporter_name: values.nama_pelapor || "",
+				reporter_phone: values.hp_pelapor || "",
+				reporter_email: values.email_pelapor || "",
+				complaint_type: values.jenis_aduan,
+				evidence_file,
+			});
+
+			toast.success("Aduan berhasil dikirim.");
+			form.resetFields();
+			onCancel();
+		} catch (err) {
+			toast.error(err instanceof Error ? err.message : "Gagal mengirim aduan.");
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	return (
@@ -62,15 +118,17 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 					onFinish={handleSubmit}
 					className="flex flex-col gap-3">
 					<div className="flex flex-col md:flex-row gap-4">
-						{/* Kolom Kiri */}
 						<div className="flex-1 flex flex-col gap-3">
 							<Form.Item
 								name="jenis_aduan"
 								label="Jenis Aduan"
 								rules={[{ required: true }]}>
 								<Select placeholder="Pilih Jenis Aduan">
-									<Select.Option value="pelecehan">Pelecehan</Select.Option>
-									<Select.Option value="korupsi">Korupsi</Select.Option>
+									{tipePelanggaran.map((item) => (
+										<Select.Option key={item.id} value={item.name}>
+											{item.name}
+										</Select.Option>
+									))}
 								</Select>
 							</Form.Item>
 
@@ -101,19 +159,10 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 								rules={[{ required: true }]}>
 								<TimePicker className="w-full" format="HH:mm" />
 							</Form.Item>
-						</div>
-
-						{/* Kolom Kanan */}
-						<div className="flex-1 flex flex-col gap-3">
-							<Form.Item
-								name="uraian"
-								label="Uraian Pengaduan"
-								rules={[{ required: true }]}>
-								<TextArea rows={6} />
-							</Form.Item>
 
 							<Form.Item
 								name="lampiran"
+								rules={[{ required: true }]}
 								label={
 									<span>
 										Lampiran / Bukti Pengaduan
@@ -132,27 +181,48 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 									</Button>
 								</Upload>
 							</Form.Item>
+						</div>
 
-							<Form.Item name="nama_pelapor" label="Nama Pelapor (opsional)">
+						{/* // Kanan */}
+						<div className="flex-1 flex flex-col gap-3">
+							<Form.Item
+								name="uraian"
+								label="Uraian Pengaduan"
+								rules={[{ required: true }]}>
+								<TextArea rows={10} />
+							</Form.Item>
+
+							<Form.Item
+								name="nama_pelapor"
+								label="Nama Pelapor"
+								rules={[{ required: true }]}>
 								<Input />
 							</Form.Item>
 
-							<Form.Item name="hp_pelapor" label="Nomor HP Pelapor (opsional)">
+							<Form.Item
+								name="hp_pelapor"
+								label="Nomor HP Pelapor"
+								rules={[{ required: true }]}>
+								<Input />
+							</Form.Item>
+
+							<Form.Item
+								name="email_pelapor"
+								label="Email Pelapor"
+								rules={[{ type: "email", required: true }]}>
 								<Input />
 							</Form.Item>
 						</div>
 					</div>
 
-					{/* Informasi Tambahan */}
 					<div className="text-sm text-blue-600 bg-blue-50 p-3 rounded">
 						<b>ℹ️ Nama dan Nomor HP Anda sebagai pelapor</b> sangat berharga
 						bagi kami untuk memverifikasi dan memvalidasi laporan Anda.
 					</div>
 
-					{/* Tombol Submit */}
 					<div className="flex justify-end pt-2">
-						<Button type="primary" htmlType="submit">
-							Submit
+						<Button type="primary" htmlType="submit" loading={loading}>
+							Kirim
 						</Button>
 					</div>
 				</Form>
