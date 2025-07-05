@@ -101,12 +101,12 @@ const NotFoundError = ({ slug }: { slug: string }) => (
 				<div>
 					<Link
 						href="/informasi"
-						className="inline-block px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors mr-3">
+						className="inline-block px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-colors mr-3 ">
 						Lihat Semua Berita
 					</Link>
 					<Link
 						href="/"
-						className="inline-block px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors">
+						className="inline-block px-6 py-3 bg-secondary text-white rounded-full hover:bg-secondary/90 transition-colors">
 						Kembali ke Beranda
 					</Link>
 				</div>

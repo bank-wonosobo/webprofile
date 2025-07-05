@@ -2,7 +2,6 @@ import MainLayout from "@/components/app/MainLayout";
 import SectionLayout from "@/components/app/SectionLayout";
 import ModalFormAduan from "@/components/report/ModalFormAduan";
 import ModalInputId from "@/components/report/ModalInputId";
-import { Button } from "antd";
 import { useState } from "react";
 import { Toaster } from "sonner";
 
@@ -16,19 +15,19 @@ export default function LaporPelanggaran() {
 			<MainLayout>
 				<SectionLayout title="Lapor Pelanggaran">
 					<div className="max-w-4xl mx-auto font-light">
-						<div className="flex flex-col md:flex-row gap-4 mb-8 items-center justify-center">
-							<Button
-								className="bg-primary p-6 rounded-full text-white font-medium"
+						<div className="flex flex-col md:flex-row gap-2 mb-8 items-center justify-center">
+							<button
+								className="inline-block px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/80 transition-colors mr-3 font-medium"
 								onClick={() => setOpen1(true)}>
 								📢 Buat Aduan
-							</Button>
+							</button>
 							<ModalFormAduan open={open1} onCancel={() => setOpen1(false)} />
 
-							<Button
-								className="bg-secondary p-6 rounded-full text-white font-medium"
+							<button
+								className="inline-block px-6 py-3 bg-secondary text-white rounded-full hover:bg-secondary/80 transition-colors mr-3 font-medium"
 								onClick={() => setOpen2(true)}>
 								🔍 Lacak Progress Aduan
-							</Button>
+							</button>
 							<ModalInputId open={open2} onCancel={() => setOpen2(false)} />
 						</div>
 						<section className="space-y-6 text-justify leading-relaxed">
