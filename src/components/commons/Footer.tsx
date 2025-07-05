@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 								className="hover:underline text-blue-400">
-								YouTube BankWonosobo
+								@bankwonosobo3617
 							</a>
 						</li>
 						<li className="flex items-center gap-2">
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 								className="hover:underline text-blue-400">
-								Instagram BankWonosobo
+								@bankwonosobo
 							</a>
 						</li>
 						<li className="flex items-center gap-2">
@@ -77,7 +77,7 @@ const Footer: React.FC = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 								className="hover:underline text-blue-400">
-								TikTok BankWonosobo
+								@bank.wonosobo
 							</a>
 						</li>
 					</ul>

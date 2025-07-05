@@ -189,7 +189,7 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 								name="uraian"
 								label="Uraian Pengaduan"
 								rules={[{ required: true }]}>
-								<TextArea rows={6} />
+								<TextArea rows={10} />
 							</Form.Item>
 
 							<Form.Item
@@ -222,7 +222,7 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 
 					<div className="flex justify-end pt-2">
 						<Button type="primary" htmlType="submit" loading={loading}>
-							Submit
+							Kirim
 						</Button>
 					</div>
 				</Form>
