@@ -50,42 +50,44 @@ export default function MapClient() {
 	}, []);
 
 	return (
-		<div className="container mx-auto sm:w-full md:w-3/4 lg:w-1/2 aspect-video px-4 mb-8">
-			<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-8">
-				Peta Lokasi Kantor Bank Wonosobo
-			</h2>
-			<MapContainer
-				center={[-7.3703301, 109.9006393]}
-				zoom={12}
-				scrollWheelZoom={true}
-				className="w-full h-full rounded-xl z-0">
-				<TileLayer
-					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-				/>
+		<div className="container mx-auto ">
+			<div className=" mx-auto w-full aspect-video lg:aspect-[calc(4*3+1)/4] px-4 mb-8">
+				<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-8">
+					Peta Lokasi Kantor Bank Wonosobo
+				</h2>
+				<MapContainer
+					center={[-7.3703301, 109.9006393]}
+					zoom={12}
+					scrollWheelZoom={true}
+					className="w-full h-full rounded-xl z-0">
+					<TileLayer
+						attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+						url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+					/>
 
-				{offices.map((office) => (
-					<Marker
-						key={office.id}
-						position={[
-							parseFloat(office.longitude),
-							parseFloat(office.latitude),
-						]}>
-						<Popup>
-							<strong>{office.name}</strong>
-							<br />
-							{office.address}
-							<br />
-							<a
-								href={office.map_link}
-								target="_blank"
-								rel="noopener noreferrer">
-								Lihat di Maps
-							</a>
-						</Popup>
-					</Marker>
-				))}
-			</MapContainer>
+					{offices.map((office) => (
+						<Marker
+							key={office.id}
+							position={[
+								parseFloat(office.longitude),
+								parseFloat(office.latitude),
+							]}>
+							<Popup>
+								<strong>{office.name}</strong>
+								<br />
+								{office.address}
+								<br />
+								<a
+									href={office.map_link}
+									target="_blank"
+									rel="noopener noreferrer">
+									Lihat di Maps
+								</a>
+							</Popup>
+						</Marker>
+					))}
+				</MapContainer>
+			</div>
 		</div>
 	);
 }
