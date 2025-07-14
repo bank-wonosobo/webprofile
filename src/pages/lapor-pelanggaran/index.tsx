@@ -5,6 +5,14 @@ import ModalInputId from "@/components/report/ModalInputId";
 import { useState } from "react";
 import { Toaster } from "sonner";
 
+// Import Ant Design Icons
+import {
+	NotificationOutlined,
+	SearchOutlined,
+	FileTextOutlined,
+	LockOutlined,
+} from "@ant-design/icons";
+
 export default function LaporPelanggaran() {
 	const [open1, setOpen1] = useState<boolean>(false);
 	const [open2, setOpen2] = useState<boolean>(false);
@@ -17,23 +25,24 @@ export default function LaporPelanggaran() {
 					<div className="max-w-4xl mx-auto font-light">
 						<div className="flex flex-col md:flex-row gap-2 mb-8 items-center justify-center">
 							<button
-								className="inline-block px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/80 transition-colors mr-3 font-medium"
+								className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full hover:bg-primary/80 transition-colors mr-3 font-medium"
 								onClick={() => setOpen1(true)}>
-								📢 Buat Aduan
+								<NotificationOutlined /> Buat Aduan
 							</button>
 							<ModalFormAduan open={open1} onCancel={() => setOpen1(false)} />
 
 							<button
-								className="inline-block px-6 py-3 bg-secondary text-white rounded-full hover:bg-secondary/80 transition-colors mr-3 font-medium"
+								className="inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white rounded-full hover:bg-secondary/80 transition-colors mr-3 font-medium"
 								onClick={() => setOpen2(true)}>
-								🔍 Lacak Progress Aduan
+								<SearchOutlined /> Lacak Progress Aduan
 							</button>
 							<ModalInputId open={open2} onCancel={() => setOpen2(false)} />
 						</div>
+
 						<section className="space-y-6 text-justify leading-relaxed">
 							<div>
 								<h2 className="text-lg font-semibold text-blue-700 flex items-center gap-2">
-									📢 Tentang Lapor Pelanggaran
+									<NotificationOutlined /> Tentang Lapor Pelanggaran
 								</h2>
 								<p>
 									Lapor Pelanggaran adalah sarana bagi Anda untuk melaporkan
@@ -47,7 +56,7 @@ export default function LaporPelanggaran() {
 
 							<div>
 								<h2 className="text-lg font-semibold text-blue-700 flex items-center gap-2">
-									📄 Unsur Pengaduan
+									<FileTextOutlined /> Unsur Pengaduan
 								</h2>
 								<ul className="list-disc pl-5 space-y-1">
 									<li>
@@ -77,7 +86,7 @@ export default function LaporPelanggaran() {
 
 							<div>
 								<h2 className="text-lg font-semibold text-blue-700 flex items-center gap-2">
-									🔒 Komitmen & Kerahasiaan
+									<LockOutlined /> Komitmen & Kerahasiaan
 								</h2>
 								<p>
 									Kami menjamin kerahasiaan identitas Anda sebagai pelapor.

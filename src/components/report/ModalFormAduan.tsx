@@ -10,7 +10,11 @@ import {
 	Upload,
 	Button,
 } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import {
+	UploadOutlined,
+	NotificationOutlined,
+	InfoCircleOutlined,
+} from "@ant-design/icons";
 import moment from "moment";
 import type { UploadFile } from "antd/es/upload/interface";
 import getTipePelanggaran from "@/data/tipe-pelanggaran";
@@ -109,7 +113,7 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 			centered>
 			<div className="">
 				<h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-					📢 Buat Aduan
+					<NotificationOutlined /> Buat Aduan
 				</h2>
 
 				<Form
@@ -215,9 +219,12 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 						</div>
 					</div>
 
-					<div className="text-sm text-blue-600 bg-blue-50 p-3 rounded">
-						<b>ℹ️ Nama dan Nomor HP Anda sebagai pelapor</b> sangat berharga
-						bagi kami untuk memverifikasi dan memvalidasi laporan Anda.
+					<div className="text-sm text-blue-600 bg-blue-50 p-3 rounded flex items-center gap-2">
+						<InfoCircleOutlined className="text-blue-500 mt-0.5" />
+						<span>
+							<b>Nama dan Nomor HP Anda sebagai pelapor</b> sangat berharga bagi
+							kami untuk memverifikasi dan memvalidasi laporan Anda.
+						</span>
 					</div>
 
 					<div className="flex justify-end pt-2">

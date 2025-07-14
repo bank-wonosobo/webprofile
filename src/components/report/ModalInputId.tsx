@@ -2,6 +2,7 @@
 
 import { Modal, Form, Input, Button } from "antd";
 import { useRouter } from "next/router";
+import { SearchOutlined } from "@ant-design/icons";
 
 interface ModalInputIdProps {
 	open: boolean;
@@ -22,7 +23,9 @@ const ModalInputId = ({ open, onCancel }: ModalInputIdProps) => {
 	return (
 		<Modal open={open} onCancel={onCancel} footer={null} centered width={400}>
 			<div className="px-4 py-4">
-				<h2 className="text-lg font-semibold mb-4">🔎 Masukkan ID Laporan</h2>
+				<h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+					<SearchOutlined /> Masukkan ID Laporan
+				</h2>
 
 				<Form
 					form={form}
@@ -38,7 +41,7 @@ const ModalInputId = ({ open, onCancel }: ModalInputIdProps) => {
 					</Form.Item>
 
 					<div className="flex justify-end">
-						<Button type="primary" htmlType="submit">
+						<Button type="primary" htmlType="submit" icon={<SearchOutlined />}>
 							Lihat Detail
 						</Button>
 					</div>
