@@ -22,7 +22,7 @@ const ProductMenu: React.FC = () => {
 			tagline: "Menabung Lebih Mudah dan Aman, Masa Depan Lebih Cerah",
 		},
 		{
-			name: "BW Digital",
+			name: "BW-Digital",
 			icon: <MdInstallMobile size={30} className="text-primary" />,
 			tagline: "Layanan Digital Bank Wonosobo",
 		},

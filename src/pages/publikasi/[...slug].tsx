@@ -73,8 +73,7 @@ export default function Page() {
 							<div>
 								<h2 className="text-lg font-semibold text-gray-800 ">
 									{" "}
-									Daftar
-									{pageTitle}
+									Daftar {pageTitle}
 								</h2>
 								<p className="text-gray-600"></p>
 							</div>
