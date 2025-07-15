@@ -1,38 +1,38 @@
-# Step 1: Use the Node.js image as the base image
-FROM node:22-alpine AS base
+# Use official Node.js image
+FROM node:22-alpine AS builder
 
-# Step 2: Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Step 3: Copy package.json and package-lock.json
-COPY package*.json ./
-
-# Step 4: Install dependencies
+# Install dependencies
+COPY package.json package-lock.json* pnpm-lock.yaml* ./
 RUN npm install
 
-# Step 5: Copy the rest of the application code
+# Copy app files
 COPY . .
+# 1️⃣ Definisikan ARG
+ARG NEXT_PUBLIC_API_URL
 
-# Step 6: Build the Next.js app
+# # 2️⃣ Set ENV dari ARG
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
+# Build the app
 RUN npm run build
 
-# Step 7: Use a minimal image for production
-FROM node:22-alpine AS production
+# -- Production Image --
+FROM node:22-alpine AS runner
 
-# Set the working directory in the production container
 WORKDIR /app
 
-# Copy only the necessary files from the build stage
-COPY --from=base /app/package*.json ./
-COPY --from=base /app/.next ./.next
-COPY --from=base /app/public ./public
-COPY --from=base /app/node_modules ./node_modules
+# Install only production deps
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/next.config.ts ./
 
-# Environment variable for Next.js
-ENV NODE_ENV=production
-
-# Expose the port the app runs on
+# Expose port
 EXPOSE 3000
 
-# Start the Next.js application
-CMD ["npm", "run", "start"]
+# Load env and start app
+CMD ["npm", "start"]
