@@ -1,8 +1,8 @@
 name: Next.js CI/CD for Production
 
 on:
-  pull_request:
-    branches: [staging]
+  push:
+    branches: [main]
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
       # 🐳 Docker: Build image
       - name: Build Docker image
         run: |
-          docker build --build-arg NEXT_PUBLIC_API_URL=${{ vars.API_URL }} -t ghcr.io/${{ github.repository }}:prod .
+          docker build --build-arg NEXT_PUBLIC_API_URL=${{ vars.API_PROD_URL }} -t ghcr.io/${{ github.repository }}:prod .
 
       # 🚀 Docker: Push image
       - name: Push Docker image

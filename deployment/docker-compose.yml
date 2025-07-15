@@ -4,7 +4,7 @@ services:
     container_name: ${PROJECT_NAME}
     restart: always
     ports:
-      - "3000:3000"
+      - "${PORT_PUBLISH}:${PORT_IMAGE}"
     env_file:
       - .env
     networks:
