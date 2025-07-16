@@ -8,6 +8,7 @@ export default function BwzDigitalPage() {
 					<h1 className="text-3xl font-bold mb-4">Kebijakan Privasi</h1>
 					<p>BW Digital – PT BPR Bank Wonosobo (Perseroda)</p>
 					<p className="text-sm">Terakhir diperbarui: 15 Mei 2025</p>
+					<br />
 				</div>
 			</header>
 
