@@ -70,9 +70,7 @@ export default function AnnouncementTable() {
 			title: "Judul",
 			dataIndex: "title",
 			key: "title",
-			render: (text) => (
-				<span className="font-medium text-blue-600">{text}</span>
-			),
+			render: (text) => <span className="font-medium ">{text}</span>,
 		},
 		{
 			title: "Lihat Detail",
@@ -120,7 +118,9 @@ export default function AnnouncementTable() {
 					className="overflow-x-auto"
 					scroll={{ x: 500 }}
 					rowClassName={({ is_active }) =>
-						`cursor-pointer ${is_active ? "" : "opacity-60"} hover:bg-gray-100`
+						`cursor-pointer ${
+							is_active ? "" : "opacity-60"
+						} hover:bg-gray-100 hover:text-blue-600`
 					}
 					onRow={(record) => ({
 						onClick: () => router.push(`/informasi/pengumuman/${record.id}`),

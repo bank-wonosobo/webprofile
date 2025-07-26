@@ -5,7 +5,6 @@ export default function BwzDigitalPage() {
 		<div className="min-h-screen text-[#333] font-sans">
 			<header className=" text-center">
 				<div className="flex flex-col items-center">
-					<h1 className="text-3xl font-bold mb-4">Kebijakan Privasi</h1>
 					<p>BW Digital – PT BPR Bank Wonosobo (Perseroda)</p>
 					<p className="text-sm">Terakhir diperbarui: 15 Mei 2025</p>
 					<br />
@@ -186,34 +185,34 @@ export default function BwzDigitalPage() {
 						content:
 							"Kami dapat mengubah Kebijakan Privasi ini dari waktu ke waktu. Setiap pembaruan akan diumumkan melalui aplikasi atau situs web resmi kami. Kami mendorong Anda untuk meninjau halaman ini secara berkala.",
 					},
-					{
-						title: "12. Kontak Kami",
-						content: (
-							<address className="not-italic leading-7">
-								<strong>PT BPR Bank Wonosobo (Perseroda)</strong>
-								<br />
-								Jl. A. Yani No. 160, Wonosobo, Jawa Tengah 56311
-								<br />
-								Email:{" "}
-								<a
-									className="text-blue-600 hover:underline"
-									href="mailto:bw.bankwonosobo@gmail.com">
-									bw.bankwonosobo@gmail.com
-								</a>
-								<br />
-								Telepon: (0286) 321293
-								<br />
-								Website:{" "}
-								<a
-									href="https://bankwonosobo.co.id"
-									target="_blank"
-									rel="noopener noreferrer"
-									className="text-blue-600 hover:underline">
-									bankwonosobo.co.id
-								</a>
-							</address>
-						),
-					},
+					// {
+					// 	title: "12. Kontak Kami",
+					// 	content: (
+					// 		<address className="not-italic leading-7">
+					// 			<strong>PT BPR Bank Wonosobo (Perseroda)</strong>
+					// 			<br />
+					// 			Jl. A. Yani No. 160, Wonosobo, Jawa Tengah 56311
+					// 			<br />
+					// 			Email:{" "}
+					// 			<a
+					// 				className="text-blue-600 hover:underline"
+					// 				href="mailto:bw.bankwonosobo@gmail.com">
+					// 				bw.bankwonosobo@gmail.com
+					// 			</a>
+					// 			<br />
+					// 			Telepon: (0286) 321293
+					// 			<br />
+					// 			Website:{" "}
+					// 			<a
+					// 				href="https://bankwonosobo.co.id"
+					// 				target="_blank"
+					// 				rel="noopener noreferrer"
+					// 				className="text-blue-600 hover:underline">
+					// 				bankwonosobo.co.id
+					// 			</a>
+					// 		</address>
+					// 	),
+					// },
 				].map((section, index) => (
 					<section key={index} className="mb-10">
 						<h2 className="text-xl font-semibold text-[#004080] mb-2 border-b-2 border-[#dce3ea] pb-1">

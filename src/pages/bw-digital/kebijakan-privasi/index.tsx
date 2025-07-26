@@ -5,7 +5,7 @@ import BwDigitalPrivacyPolicy from "@/components/products/BwDigitalPrivacyPolicy
 export default function BwzDigitalPage() {
 	return (
 		<MainLayout>
-			<SectionLayout title="BW Digital">
+			<SectionLayout title="Kebijakan Privasi BW Digital">
 				<BwDigitalPrivacyPolicy />
 			</SectionLayout>
 		</MainLayout>
