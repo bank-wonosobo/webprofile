@@ -33,7 +33,7 @@ const getBeritaWithPagination = async (
 	limit: number = 8
 ): Promise<ApiResponse> => {
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_API_URL}/api/v1/admin/news?page=${page}&limit=${limit}`
+		`${process.env.NEXT_PUBLIC_API_URL}/api/v1/news?page=${page}&limit=${limit}`
 	);
 
 	if (!response.ok) {
