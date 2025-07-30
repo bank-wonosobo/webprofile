@@ -15,7 +15,7 @@ import {
 	NotificationOutlined,
 	InfoCircleOutlined,
 } from "@ant-design/icons";
-import moment from "moment";
+import moment, { Moment } from "moment";
 import type { UploadFile } from "antd/es/upload/interface";
 import getTipePelanggaran from "@/data/tipe-pelanggaran";
 import { useEffect, useState } from "react";
@@ -30,8 +30,8 @@ interface AduanFormData {
 	uraian: string;
 	nama_terlapor: string;
 	lokasi: string;
-	tanggal: moment.Moment;
-	waktu: moment.Moment;
+	tanggal: Moment;
+	waktu: Moment;
 	lampiran?: UploadFile[];
 	nama_pelapor?: string;
 	hp_pelapor?: string;
@@ -79,7 +79,9 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 				)
 				.toISOString();
 
-			const evidence_file = values.lampiran?.[0]?.originFileObj;
+			const evidence_file = values.lampiran?.[0]?.originFileObj as
+				| File
+				| undefined;
 
 			const result = await postPelanggaran({
 				reported_name: values.nama_terlapor,
@@ -93,7 +95,7 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 				evidence_file,
 			});
 
-			const id = result?.data?.complaint_id;
+			const id = result?.data?.id;
 			if (id) {
 				setComplaintId(id);
 				setModalSuccessOpen(true);
@@ -104,7 +106,16 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 				toast.error("Gagal mendapatkan ID laporan.");
 			}
 		} catch (error) {
-			console.error("Error submitting complaint:", error);
+			if (error instanceof Error) {
+				console.error("Error submitting complaint:", error.message);
+				if (error.message.includes("invalid image format")) {
+					toast.error(
+						"Format gambar tidak didukung. Hanya jpg, jpeg, png, gif, dan webp yang diperbolehkan."
+					);
+				} else {
+					toast.error("Terjadi kesalahan saat mengirim aduan.");
+				}
+			}
 		} finally {
 			setLoading(false);
 		}
@@ -200,7 +211,6 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 								</Form.Item>
 							</div>
 
-							{/* // Kanan */}
 							<div className="flex-1 flex flex-col gap-3">
 								<Form.Item
 									name="uraian"
