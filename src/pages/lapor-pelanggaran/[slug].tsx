@@ -5,6 +5,7 @@ import { Card, Table, Tag, Spin, Alert } from "antd";
 import { getComplaintById, ComplaintDetail } from "@/data/complaint-by-id";
 import { useEffect, useState } from "react";
 import moment from "moment";
+import { DownloadOutlined } from "@ant-design/icons";
 
 export default function DetailLaporan() {
 	const router = useRouter();
@@ -61,7 +62,11 @@ export default function DetailLaporan() {
 		return (
 			<MainLayout>
 				<SectionLayout title="Detail Aduan">
-					<Alert type="error" message="Gagal memuat data" description={error} />
+					<Alert
+						type="error"
+						className="text-center"
+						message="Data tidak ditemukan"
+					/>
 				</SectionLayout>
 			</MainLayout>
 		);
@@ -73,7 +78,7 @@ export default function DetailLaporan() {
 		{ key: "1", label: "ID Laporan", value: data.id },
 		{ key: "2", label: "Jenis Aduan", value: data.complaint_type },
 		{ key: "3", label: "Nama Terlapor", value: data.reported_name },
-		{ key: "4", label: "Email Terlapor", value: data.email },
+		// { key: "4", label: "Email Terlapor", value: data.email },
 		{ key: "5", label: "Lokasi Kejadian", value: data.insident_location },
 		{
 			key: "6",
@@ -81,8 +86,8 @@ export default function DetailLaporan() {
 			value: moment(data.insident_time).format("D MMMM YYYY, HH:mm"),
 		},
 		{ key: "7", label: "Uraian", value: data.description },
-		{ key: "8", label: "Nama Pelapor", value: data.reporter_name },
-		{ key: "9", label: "Nomor HP Pelapor", value: data.reporter_phone },
+		// { key: "8", label: "Nama Pelapor", value: data.reporter_name },
+		// { key: "9", label: "Nomor HP Pelapor", value: data.reporter_phone },
 		{ key: "10", label: "Status", value: renderStatusTag(data.status) },
 	];
 
@@ -113,11 +118,14 @@ export default function DetailLaporan() {
 					{data.evidence_url && (
 						<div>
 							<p className="mb-2 font-medium">Bukti Pengaduan:</p>
-							<img
-								src={data.evidence_url}
-								alt="Bukti"
-								className="rounded max-w-md border shadow"
-							/>
+							<div
+								className="flex justify-between items-center p-4 px-6 w-full lg:w-1/4 md:w-3/4 bg-primary text-white transition-colors rounded-full cursor-pointer hover:bg-primary/80"
+								onClick={() => window.open(data.evidence_url, "_blank")}
+								role="link">
+								<p>Unduh / lihat bukti pengaduan </p>
+
+								<DownloadOutlined style={{ fontSize: 24 }} />
+							</div>
 						</div>
 					)}
 				</Card>
