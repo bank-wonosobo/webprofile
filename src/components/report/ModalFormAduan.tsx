@@ -95,7 +95,7 @@ const ModalFormAduan = ({ open, onCancel }: ModalFormAduanProps) => {
 				evidence_file,
 			});
 
-			const id = result?.data?.id;
+			const id = result?.data?.complaint_id;
 			if (id) {
 				setComplaintId(id);
 				setModalSuccessOpen(true);

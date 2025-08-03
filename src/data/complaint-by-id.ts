@@ -15,7 +15,7 @@ export interface ComplaintDetail {
 
 export async function getComplaintById(id: string): Promise<ComplaintDetail> {
 	const res = await fetch(
-		`${process.env.NEXT_PUBLIC_API_URL}/api/v1/complaints/${id}`
+		`${process.env.NEXT_PUBLIC_API_URL}/api/v1/complaints/${id}/id`
 	);
 
 	if (!res.ok) {

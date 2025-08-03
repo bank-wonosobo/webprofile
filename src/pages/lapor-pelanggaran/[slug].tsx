@@ -75,7 +75,7 @@ export default function DetailLaporan() {
 	if (!data) return null;
 
 	const tableData = [
-		{ key: "1", label: "ID Laporan", value: data.id },
+		{ key: "1", label: "ID Laporan", value: data.complaint_id },
 		{ key: "2", label: "Jenis Aduan", value: data.complaint_type },
 		{ key: "3", label: "Nama Terlapor", value: data.reported_name },
 		// { key: "4", label: "Email Terlapor", value: data.email },
