@@ -8,37 +8,25 @@ import { FiMail, FiPhone } from "react-icons/fi";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className=" bg-white py-6">
-        <div className="container w-96 gap-x-12 mx-auto flex justify-center items-center">
-          <img
-            src="/static/pemkab-wsb.png"
-            alt="Logo Bank Wonosobo"
-            className="w-14"
-          />
-          <img
-            src="/static/bpr.png"
-            className="w-14"
-            alt="Logo Bank Wonosobo"
-          />
-          <img
-            src="/static/ojk.png"
-            className="w-40"
-            alt="Logo Bank Wonosobo"
-          />
-          <img
-            src="/static/lps.png"
-            className="w-40"
-            alt="Logo Bank Wonosobo"
-          />
-        </div>
-      </div>
-      <div className="container p-4 py-8 mx-auto mb-6">
+    <footer className="bg-gray-900 text-gray-300 pb-10">
+      <div className="container flex p-4 py-8 gap-x-10 mx-auto mb-2">
         <img
           src="/static/logo-bw-white.svg"
           alt="Logo Bank Wonosobo"
           className="w-40"
         />
+        <img
+          src="/static/pemkab-wsb.png"
+          alt="Logo Bank Wonosobo"
+          className="w-10"
+        />
+      </div>
+      <div className="container mx-auto pb-10">
+        <h2>
+          <b>PT BPR Bank Wonosobo (Perseroda)</b> berizin dan diawasi oleh
+          Otoritas Jasa Keuangan (OJK) dan merupakan perserta penjaminan Lembaga
+          Penjamin Simpanan (LPS){" "}
+        </h2>
       </div>
 
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">

@@ -13,7 +13,6 @@ const MapClient = dynamic(() => import("../components/commons/Maps"), {
   ssr: false,
 });
 export default function Home() {
-  // console.log("NEXT_PUBLIC_API_URL:", process.env.NEXT_PUBLIC_API_URL);
   return (
     <>
       <Head>
