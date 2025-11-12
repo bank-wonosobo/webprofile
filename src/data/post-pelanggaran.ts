@@ -37,7 +37,7 @@ export async function postPelanggaran(values: AduanPayload) {
 	// }
 
 	const res = await fetch(
-		"https://api-dev.bankwonosobo.co.id/api/v1/complaints",
+		`${process.env.NEXT_PUBLIC_API_URL}/api/v1/complaints`,
 		{
 			method: "POST",
 			body: formData,
