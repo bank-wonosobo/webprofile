@@ -6,7 +6,7 @@ import {
 import Link from "next/link";
 import { FiMail, FiPhone } from "react-icons/fi";
 
-const Footer: React.FC = () => {
+const Footer: React.FC = () => {``
   return (
     <footer className="bg-gray-900 text-gray-300 pb-10">
       <div className="container flex p-4 py-8 gap-x-10 mx-auto mb-2">
