@@ -22,11 +22,24 @@ const Footer: React.FC = () => {
         />
       </div>
       <div className="container mx-auto pb-10">
-        <h2>
+        <p className="text-sm">
           <b>PT BPR Bank Wonosobo (Perseroda)</b> berizin dan diawasi oleh
-          Otoritas Jasa Keuangan (OJK) dan merupakan perserta penjaminan Lembaga
-          Penjamin Simpanan (LPS){" "}
-        </h2>
+          Otoritas Jasa Keuangan (OJK)
+        </p>
+        <p className="text-sm mt-2">
+          <b>PT BPR Bank Wonosobo (Perseroda)</b> merupakan peserta penjaminan
+          LPS. Maksimum nilai simpanan yang dijamin LPS per Nasabah per Bank
+          adalah Rp2 miliar. Untuk mengetahui Tingkat Bunga Penjaminan LPS
+          silahkan{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline text-blue-400"
+            href="https://apps.lps.go.id/BankPesertaLPSRate"
+          >
+            akses disini
+          </a>
+        </p>
       </div>
 
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
