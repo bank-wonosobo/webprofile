@@ -12,7 +12,7 @@ const opensans = Noto_Sans({
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<main className={opensans.className}>
-			<ConfigProvider theme={{ token: { colorPrimary: "#d2b56b" } }}>
+			<ConfigProvider theme={{ token: { colorPrimary: "#18254F" } }}>
 				<div className="">
 					<Component {...pageProps} />
 				</div>

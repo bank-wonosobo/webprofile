@@ -91,7 +91,7 @@ export default function LaporPelanggaran() {
 								<p>
 									Kami menjamin kerahasiaan identitas Anda sebagai pelapor.
 									Informasi yang Anda berikan akan kami jaga dengan sepenuh hati
-									dan tidak akan disebarluaskan. PT BPR BANK BAPAS 69
+									dan tidak akan disebarluaskan. PT BPR BANK WONOSOBO
 									(Perseroda) menghargai setiap laporan yang masuk dan
 									berkomitmen untuk menindaklanjutinya dengan serius dan tepat
 									waktu.

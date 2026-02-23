@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import { useEffect, useState } from "react";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 // Safe fix for marker icon path in Next.js with proper typing
 interface IconWithGetUrl extends L.Icon.Default {
@@ -26,6 +26,7 @@ interface Office {
 	latitude: string;
 	longitude: string;
 	map_link: string;
+	image_url: string;
 }
 
 export default function MapClient() {
@@ -73,16 +74,23 @@ export default function MapClient() {
 								parseFloat(office.latitude),
 							]}>
 							<Popup>
-								<strong>{office.name}</strong>
-								<br />
-								{office.address}
-								<br />
-								<a
-									href={office.map_link}
-									target="_blank"
-									rel="noopener noreferrer">
-									Lihat di Maps
-								</a>
+								<div className="flex gap-x-2">
+									<div>
+										<img src={office.image_url} className="rounded-md" />
+									</div>
+									<div>
+										<strong>{office.name}</strong>
+										<br />
+										{office.address}
+										<br />
+										<a
+											href={office.map_link}
+											target="_blank"
+											rel="noopener noreferrer">
+											Lihat di Maps
+										</a>
+									</div>
+								</div>
 							</Popup>
 						</Marker>
 					))}
