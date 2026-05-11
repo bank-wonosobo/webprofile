@@ -1,73 +1,76 @@
 import MainLayout from "@/components/app/MainLayout";
 import SectionLayout from "@/components/app/SectionLayout";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import type { GetServerSideProps } from "next";
 import Link from "next/link";
+import {
+	getDynamicVisionMission,
+	type ApiVisionMissionItem,
+} from "@/data/vision-mission";
 
-export default function VisiMisi() {
+interface VisiMisiPageProps {
+	items?: ApiVisionMissionItem[];
+}
+
+const EmptyVisionMissionContent = () => (
+	<div className="rounded-2xl border border-dashed border-gray-300 bg-gray-50 px-6 py-12 text-center">
+		<h2 className="text-xl font-semibold text-primary">
+			Visi & misi belum tersedia
+		</h2>
+		<p className="mt-3 text-sm leading-relaxed text-gray-600">
+			Data visi dan misi dari `bw-admin` / `publikasi-api` belum ditemukan atau
+			belum bisa dimuat saat ini.
+		</p>
+	</div>
+);
+
+export default function VisiMisi({ items = [] }: VisiMisiPageProps) {
 	return (
 		<MainLayout>
 			<SectionLayout title="Visi & Misi">
 				<div className="flex justify-center items-center flex-col">
-					<div className="mb-8 max-w-4xl ">
-						<h2 className="text-2xl font-bold  mb-2 text-center text-secondary">
-							Visi PT BPR BANK WONOSOBO (PERSERODA)
-						</h2>
-						<p className="text-lg font-semibold text-primary italic text-center">
-							“Menjadi BPR Terbaik yang Membanggakan”
-						</p>
-					</div>
+					<div className="max-w-4xl font-light space-y-10">
+						{items.length > 0 ? (
+							items.map((item) => (
+								<section key={item.id} className="space-y-6">
+									<div className="space-y-2">
+										<h2 className="text-2xl font-bold text-center text-secondary">
+											{item.title}
+										</h2>
+									</div>
 
-					<div className="max-w-4xl font-light">
-						<h2 className="text-2xl font-bold  mb-4 text-center text-secondary">
-							Misi - misi
-						</h2>
-						<ol className="list-decimal pl-5 space-y-4 text-primary">
-							<li>
-								<span className="font-medium">
-									Mencapai kinerja terbaik di antara BPR.
-								</span>
-								<ul className="list-[lower-alpha] pl-6 mt-1 space-y-1">
-									<li>Meningkatkan tingkat kesehatan.</li>
-									<li>Mengurangi risiko-risiko perbankan.</li>
-								</ul>
-							</li>
+									{item.image_url ? (
+										<img
+											src={item.image_url}
+											alt={item.title}
+											className="w-full rounded-2xl object-cover shadow-sm"
+										/>
+									) : null}
 
-							<li>
-								<span className="font-medium">
-									Meningkatkan pertumbuhan deviden.
-								</span>
-								<ul className="list-[lower-alpha] pl-6 mt-1 space-y-1">
-									<li>Meningkatkan kontribusi terhadap pemerintah daerah.</li>
-									<li>
-										Memberikan Deviden yang tertinggi di antara BUMD di
-										Kabupaten Wonosobo.
-									</li>
-									<li>Meningkatkan peran dalam perekonomian daerah.</li>
-								</ul>
-							</li>
+									<div className="space-y-3">
+										<div
+											className="prose prose-slate max-w-none text-lg text-primary text-center"
+											dangerouslySetInnerHTML={{ __html: item.vision }}
+										/>
+									</div>
 
-							<li>
-								<span className="font-medium">
-									Meningkatkan reputasi dan menjadikan PT BPR BANK WONOSOBO
-									(PERSERODA) sebagai pilihan utama masyarakat Wonosobo dan
-									sekitarnya.
-								</span>
-								<ul className="list-[lower-alpha] pl-6 mt-1 space-y-1">
-									<li>Meningkatkan profesionalisme dan Sumber Daya Manusia.</li>
-									<li>
-										Meningkatkan pelayanan yang efektif, efisien dan tanggap.
-									</li>
-									<li>
-										Meningkatkan produk layanan yang lengkap dengan dukungan
-										teknologi informasi yang unggul dan terjangkau segala
-										lapisan masyarakat.
-									</li>
-									<li>
-										Mencapai Image Bank Wonosobo sebagai “Bange wong Wonosobo”.
-									</li>
-								</ul>
-							</li>
-						</ol>
+									<div className="space-y-2">
+										<h2 className="text-2xl font-bold text-center text-secondary">
+											MISI - MISI
+										</h2>
+									</div>
+
+									<div className="space-y-3">
+										<div
+											className="prose prose-slate max-w-none text-primary"
+											dangerouslySetInnerHTML={{ __html: item.mission }}
+										/>
+									</div>
+								</section>
+							))
+						) : (
+							<EmptyVisionMissionContent />
+						)}
 						<div className="flex justify-between mt-6 text-base text-right border-t border-gray-200 pt-6">
 							<Link
 								href="/struktur-organisasi"
@@ -88,3 +91,14 @@ export default function VisiMisi() {
 		</MainLayout>
 	);
 }
+
+export const getServerSideProps: GetServerSideProps<VisiMisiPageProps> =
+	async () => {
+		const items = await getDynamicVisionMission();
+
+		return {
+			props: {
+				items,
+			},
+		};
+	};
