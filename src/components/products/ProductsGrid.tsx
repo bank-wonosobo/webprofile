@@ -82,7 +82,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({ category, link }) => {
 							<div className="p-4">
 								{item.description && (
 									<p className="text-sm text-gray-600 mt-2 line-clamp-2 ">
-										{item.description}
+										{item.description.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim()}
 									</p>
 								)}
 								<div className="text-sm mt-4 flex items-center gap-x-2 hover:text-secondary text-primary font-normal">
