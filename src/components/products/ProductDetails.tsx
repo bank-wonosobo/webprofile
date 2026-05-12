@@ -155,9 +155,10 @@ export default function ProductDetail() {
 						Kategori: {capitalize(product.product_category)}
 					</p> */}
 
-          <div className="prose max-w-none text-gray-700 leading-relaxed whitespace-pre-line">
-            {product.description}
-          </div>
+          <div
+            className="prose max-w-none text-gray-700 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: product.description }}
+          />
         </div>
       </SectionLayout>
     </MainLayout>
