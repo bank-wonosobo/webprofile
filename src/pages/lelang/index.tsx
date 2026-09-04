@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import MainLayout from "@/components/app/MainLayout";
 import SectionLayout from "@/components/app/SectionLayout";
 import { getAuctions, type ApiAuctionItem } from "@/data/auction";
