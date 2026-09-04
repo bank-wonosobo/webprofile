@@ -63,27 +63,27 @@ export default function TableJaringanKantor() {
 			dataIndex: "phone_number",
 			key: "phone_number",
 		},
-		{
-			title: "Map",
-			dataIndex: "map_link",
-			key: "map_link",
-			width: 150,
-			render: (link) =>
-				link ? (
-					<Space>
-						<EnvironmentOutlined className="text-blue-600 align-middle" />
-						<a
-							href={link}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-blue-600 hover:text-blue-800 align-middle">
-							Lihat Lokasi
-						</a>
-					</Space>
-				) : (
-					<span className="text-gray-400">Tidak tersedia</span>
-				),
-		},
+		// {
+		// 	title: "Map",
+		// 	dataIndex: "map_link",
+		// 	key: "map_link",
+		// 	width: 150,
+		// 	render: (link) =>
+		// 		link ? (
+		// 			<Space>
+		// 				<EnvironmentOutlined className="text-blue-600 align-middle" />
+		// 				<a
+		// 					href={link}
+		// 					target="_blank"
+		// 					rel="noopener noreferrer"
+		// 					className="text-blue-600 hover:text-blue-800 align-middle">
+		// 					Lihat Lokasi
+		// 				</a>
+		// 			</Space>
+		// 		) : (
+		// 			<span className="text-gray-400">Tidak tersedia</span>
+		// 		),
+		// },
 	];
 
 	return (
