@@ -56,6 +56,7 @@ export default function AnnouncementTable() {
 
 	useEffect(() => {
 		fetchData(1, pagination.pageSize);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const columns: ColumnsType<Pengumuman> = [

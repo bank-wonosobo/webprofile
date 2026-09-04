@@ -79,6 +79,7 @@ export default function TabelLaporan({ slug }: TabelLaporanProps) {
 
 	useEffect(() => {
 		fetchDataWithPagination(1, 10);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [slug, selectedYear]);
 
 	const formatDate = (dateString: string) => {

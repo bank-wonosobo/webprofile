@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table, Space, message } from "antd";
-import { EnvironmentOutlined } from "@ant-design/icons";
+import { Table, message } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { getOffices, Office } from "@/data/kantor";
 
@@ -36,6 +35,7 @@ export default function TableJaringanKantor() {
 
 	useEffect(() => {
 		fetchDataWithPagination(pagination.current, pagination.pageSize);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const columns: ColumnsType<Office> = [

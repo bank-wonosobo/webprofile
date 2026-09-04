@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { FileTextOutlined, HomeOutlined } from "@ant-design/icons";
