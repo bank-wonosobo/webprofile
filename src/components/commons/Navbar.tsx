@@ -4,7 +4,7 @@
 import getLaporanByType from "@/data/tipe-laporan";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp, IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { MdInstallMobile } from "react-icons/md";
 import { PiHandDepositBold } from "react-icons/pi";
 import { RxCross2 } from "react-icons/rx";
@@ -22,12 +22,15 @@ const Navbar: React.FC = () => {
   const [publikasi, setPublikasi] = useState<LaporanTypeItem[]>([]);
   // const [loading, setLoading] = useState(true);
 
-  type MobileMenuKeys = "profile" | "products" | "publications";
+  type MobileMenuKeys = "profile" | "products" | "publications" | "pengaduan" | "ppid_laporan" | "ppid_daftar_informasi";
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState({
     profile: false,
     products: false,
     publications: false,
+    pengaduan: false,
+    ppid_laporan: false,
+    ppid_daftar_informasi: false,
   });
 
   useEffect(() => {
@@ -90,30 +93,6 @@ const Navbar: React.FC = () => {
                 Beranda
               </li>
             </Link>
-            <li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative">
-              <Dropdown name="Profile">
-                <Link href={"/profil"}>
-                  <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                    Profil
-                  </li>
-                </Link>
-                <Link href={"/struktur-organisasi"}>
-                  <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                    Struktur Organisasi
-                  </li>
-                </Link>
-                <Link href={"/visi-misi"}>
-                  <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                    Visi & Misi
-                  </li>
-                </Link>
-                <Link href={"/jaringan-kantor"}>
-                  <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                    Jaringan Kantor
-                  </li>
-                </Link>
-              </Dropdown>
-            </li>
             <li className="flex justify-between items-center hover:border-b-[3px] border-b-secondary">
               <Dropdown name="Produk & Layanan">
                 <Link href={"/tabungan"}>
@@ -168,41 +147,111 @@ const Navbar: React.FC = () => {
               </li>
             </Link>
             <li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative">
-              <Dropdown name="Publikasi">
-                <Link href={"/publikasi"}>
+              <Dropdown name="PPID">
+                {/* Profile Sub-dropdown */}
+                <li className="group relative px-4 py-3 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
+                  Profile
+                  <IoIosArrowBack size={16} />
+                  <div className="absolute hidden group-hover:block top-0 right-full min-w-48 bg-white border border-gray-200 rounded-md shadow-md mr-1">
+                    <ul className="py-2 text-gray-700">
+                      <Link href={"/profil"}>
+                        <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-left">
+                          Profil
+                        </li>
+                      </Link>
+                      <Link href={"/struktur-organisasi"}>
+                        <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-left">
+                          Struktur Organisasi
+                        </li>
+                      </Link>
+                      <Link href={"/visi-misi"}>
+                        <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-left">
+                          Visi & Misi
+                        </li>
+                      </Link>
+                      <Link href={"/jaringan-kantor"}>
+                        <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-left">
+                          Jaringan Kantor
+                        </li>
+                      </Link>
+                    </ul>
+                  </div>
+                </li>
+
+                {/* Laporan Sub-dropdown */}
+                <li className="group relative px-4 py-3 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
+                  Laporan
+                  <IoIosArrowBack size={16} />
+                  <div className="absolute hidden group-hover:block top-0 right-full min-w-48 bg-white border border-gray-200 rounded-md shadow-md mr-1">
+                    <ul className="py-2 text-gray-700">
+                      {publikasi.map((item) => (
+                        <Link
+                          key={item.id}
+                          href={`/publikasi/${item.id}/${item.name
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")}`}
+                        >
+                          <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-left">
+                            {item.name}
+                          </li>
+                        </Link>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+
+                {/* Daftar Informasi Sub-dropdown */}
+                <li className="group relative px-4 py-3 hover:bg-gray-100 cursor-pointer flex justify-between items-center">
+                  Daftar Informasi
+                  <IoIosArrowBack size={16} />
+                  <div className="absolute hidden group-hover:block top-0 right-full min-w-56 bg-white border border-gray-200 rounded-md shadow-md mr-1">
+                    <ul className="py-2 text-gray-700">
+                      <Link href={"/daftar-informasi-publik"}>
+                        <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-left">
+                          Daftar Informasi Publik
+                        </li>
+                      </Link>
+                      <Link href={"/daftar-informasi-dikecualikan"}>
+                        <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer text-left">
+                          Daftar Informasi yang Dikecualikan
+                        </li>
+                      </Link>
+                    </ul>
+                  </div>
+                </li>
+
+                {/* Regulasi Informasi PPID */}
+                <Link href={"/regulasi-informasi-ppid"}>
                   <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                    Semua Publikasi
+                    Regulasi Informasi PPID
                   </li>
                 </Link>
-                {publikasi.map((item) => (
-                  <Link
-                    key={item.id}
-                    href={`/publikasi/${item.id}/${item.name
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")}`}
-                  >
-                    <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                      {item.name}
-                    </li>
-                  </Link>
-                ))}
               </Dropdown>
             </li>
-            <Link href={"/lelang"}>
-              <li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
-                Lelang
-              </li>
-            </Link>
+             <Link href={"/lelang"}>
+                  <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                    Lelang
+                  </li>
+              </Link>
             <Link href={"/karir"}>
               <li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
                 Karir
               </li>
             </Link>
-            <Link href={"/lapor-pelanggaran"}>
-              <li className="px-3 hover:border-b-[3px] border-b-secondary py-4">
-                Lapor Pelanggaran
-              </li>
-            </Link>
+            <li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative">
+              <Dropdown name="Pengaduan">
+                <Link href={"/pengaduan-nasabah"}>
+                  <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                    Pengaduan Nasabah
+                  </li>
+                </Link>
+                <Link href={"/lapor-pelanggaran"}>
+                  <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                    Whistle Blowing System
+                  </li>
+                </Link>
+              </Dropdown>
+            </li>
           </ul>
         </div>
 
@@ -216,55 +265,7 @@ const Navbar: React.FC = () => {
                 </Link>
               </li>
 
-              {/* Profile Menu with submenu */}
-              <li className="py-2 px-4 border-b border-gray-100">
-                <div
-                  className="flex items-center justify-between cursor-pointer"
-                  onClick={() => toggleMobileSubmenu("profile")}
-                >
-                  <span>Profile</span>
-                  <span className="text-primary">
-                    {mobileMenuOpen.profile ? (
-                      <IoIosArrowUp size={18} />
-                    ) : (
-                      <IoIosArrowDown size={18} />
-                    )}
-                  </span>
-                </div>
-                {mobileMenuOpen.profile && (
-                  <ul className="pl-4 mt-2 space-y-2">
-                    <li className="py-1">
-                      <Link href={"/profil"} onClick={() => setIsOpen(false)}>
-                        Profil
-                      </Link>
-                    </li>
-                    <li className="py-1">
-                      <Link
-                        href={"/struktur-organisasi"}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Struktur Organisasi
-                      </Link>
-                    </li>
-                    <li className="py-1">
-                      <Link
-                        href={"/visi-misi"}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Visi & Misi
-                      </Link>
-                    </li>
-                    <li className="py-1">
-                      <Link
-                        href={"/jaringan-kantor"}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Jaringan Kantor
-                      </Link>
-                    </li>
-                  </ul>
-                )}
-              </li>
+
 
               {/* Produk & Layanan Menu */}
               <li className="py-2 px-4 border-b border-gray-100">
@@ -337,13 +338,13 @@ const Navbar: React.FC = () => {
                 </Link>
               </li>
 
-              {/* Publikasi Menu */}
+              {/* Publikasi / PPID Menu */}
               <li className="py-2 px-4 border-b border-gray-100">
                 <div
                   className="flex items-center justify-between cursor-pointer"
                   onClick={() => toggleMobileSubmenu("publications")}
                 >
-                  <span>Publikasi</span>
+                  <span>PPID</span>
                   <span className="text-primary">
                     {mobileMenuOpen.publications ? (
                       <IoIosArrowUp size={18} />
@@ -354,49 +355,164 @@ const Navbar: React.FC = () => {
                 </div>
                 {mobileMenuOpen.publications && (
                   <ul className="pl-4 mt-2 space-y-2">
+                    {/* Profile */}
+                    <li className="py-1">
+                      <div
+                        className="flex items-center justify-between cursor-pointer"
+                        onClick={() => toggleMobileSubmenu("profile")}
+                      >
+                        <span>Profile</span>
+                        <span className="text-primary">
+                          {mobileMenuOpen.profile ? (
+                            <IoIosArrowUp size={16} />
+                          ) : (
+                            <IoIosArrowDown size={16} />
+                          )}
+                        </span>
+                      </div>
+                      {mobileMenuOpen.profile && (
+                        <ul className="pl-4 mt-2 space-y-2 border-l border-gray-200">
+                          <li className="py-1">
+                            <Link href={"/profil"} onClick={() => setIsOpen(false)}>
+                              Profil
+                            </Link>
+                          </li>
+                          <li className="py-1">
+                            <Link href={"/struktur-organisasi"} onClick={() => setIsOpen(false)}>
+                              Struktur Organisasi
+                            </Link>
+                          </li>
+                          <li className="py-1">
+                            <Link href={"/visi-misi"} onClick={() => setIsOpen(false)}>
+                              Visi & Misi
+                            </Link>
+                          </li>
+                          <li className="py-1">
+                            <Link href={"/jaringan-kantor"} onClick={() => setIsOpen(false)}>
+                              Jaringan Kantor
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </li>
+
+                    {/* Laporan */}
+                    <li className="py-1">
+                      <div
+                        className="flex items-center justify-between cursor-pointer"
+                        onClick={() => toggleMobileSubmenu("ppid_laporan")}
+                      >
+                        <span>Laporan</span>
+                        <span className="text-primary">
+                          {mobileMenuOpen.ppid_laporan ? (
+                            <IoIosArrowUp size={16} />
+                          ) : (
+                            <IoIosArrowDown size={16} />
+                          )}
+                        </span>
+                      </div>
+                      {mobileMenuOpen.ppid_laporan && (
+                        <ul className="pl-4 mt-2 space-y-2 border-l border-gray-200">
+                          {publikasi.map((item) => (
+                            <li key={item.id} className="py-1">
+                              <Link
+                                href={`/publikasi/${item.id}/${item.name
+                                  .toLowerCase()
+                                  .replace(/\s+/g, "-")}`}
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {item.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+
+                    {/* Daftar Informasi */}
+                    <li className="py-1">
+                      <div
+                        className="flex items-center justify-between cursor-pointer"
+                        onClick={() => toggleMobileSubmenu("ppid_daftar_informasi")}
+                      >
+                        <span>Daftar Informasi</span>
+                        <span className="text-primary">
+                          {mobileMenuOpen.ppid_daftar_informasi ? (
+                            <IoIosArrowUp size={16} />
+                          ) : (
+                            <IoIosArrowDown size={16} />
+                          )}
+                        </span>
+                      </div>
+                      {mobileMenuOpen.ppid_daftar_informasi && (
+                        <ul className="pl-4 mt-2 space-y-2 border-l border-gray-200">
+                          <li className="py-1">
+                            <Link href={"/daftar-informasi-publik"} onClick={() => setIsOpen(false)}>
+                              Daftar Informasi Publik
+                            </Link>
+                          </li>
+                          <li className="py-1">
+                            <Link href={"/daftar-informasi-dikecualikan"} onClick={() => setIsOpen(false)}>
+                              Daftar Informasi Dikecualikan
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </li>
+
+                    {/* Regulasi Informasi PPID */}
                     <li className="py-1">
                       <Link
-                        href={"/publikasi"}
+                        href={"/regulasi-informasi-ppid"}
                         onClick={() => setIsOpen(false)}
                       >
-                        Semua Publikasi
+                        Regulasi Informasi PPID
                       </Link>
                     </li>
-                    {publikasi.map((item) => (
-                      <li key={item.id} className="py-1">
-                        <Link
-                          href={`/publikasi/${item.id}/${item.name
-                            .toLowerCase()
-                            .replace(/\s+/g, "-")}`}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.name}
-                        </Link>
-                      </li>
-                    ))}
                   </ul>
                 )}
               </li>
-
-              <li className="py-2 px-4 border-b border-gray-100">
-                <Link href={"/lelang"} onClick={() => setIsOpen(false)}>
-                  Lelang
-                </Link>
-              </li>
-
               <li className="py-2 px-4 border-b border-gray-100">
                 <Link href={"/karir"} onClick={() => setIsOpen(false)}>
                   Karir
                 </Link>
               </li>
 
+              {/* Pengaduan Menu */}
               <li className="py-2 px-4 border-b border-gray-100">
-                <Link
-                  href={"/lapor-pelanggaran"}
-                  onClick={() => setIsOpen(false)}
+                <div
+                  className="flex items-center justify-between cursor-pointer"
+                  onClick={() => toggleMobileSubmenu("pengaduan")}
                 >
-                  Lapor Pelanggaran
-                </Link>
+                  <span>Pengaduan</span>
+                  <span className="text-primary">
+                    {mobileMenuOpen.pengaduan ? (
+                      <IoIosArrowUp size={18} />
+                    ) : (
+                      <IoIosArrowDown size={18} />
+                    )}
+                  </span>
+                </div>
+                {mobileMenuOpen.pengaduan && (
+                  <ul className="pl-4 mt-2 space-y-2">
+                    <li className="py-1">
+                      <Link
+                        href={"/pengaduan-nasabah"}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Pengaduan Nasabah
+                      </Link>
+                    </li>
+                    <li className="py-1">
+                      <Link
+                        href={"/lapor-pelanggaran"}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Whistle Blowing System
+                      </Link>
+                    </li>
+                  </ul>
+                )}
               </li>
             </ul>
           </div>
