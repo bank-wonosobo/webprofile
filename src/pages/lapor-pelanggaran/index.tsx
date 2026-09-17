@@ -21,7 +21,7 @@ export default function LaporPelanggaran() {
 		<>
 			<Toaster richColors position="top-right" />
 			<MainLayout>
-				<SectionLayout title="Lapor Pelanggaran">
+				<SectionLayout title="Whistleblowing System">
 					<div className="max-w-4xl mx-auto font-light">
 						<div className="flex flex-col md:flex-row gap-2 mb-8 items-center justify-center">
 							<button
@@ -42,10 +42,10 @@ export default function LaporPelanggaran() {
 						<section className="space-y-6 text-justify leading-relaxed">
 							<div>
 								<h2 className="text-lg font-semibold text-blue-700 flex items-center gap-2">
-									<NotificationOutlined /> Tentang Lapor Pelanggaran
+									<NotificationOutlined /> Tentang Whistleblowing System
 								</h2>
 								<p>
-									Lapor Pelanggaran adalah sarana bagi Anda untuk melaporkan
+									Whistleblowing System adalah sarana bagi Anda untuk melaporkan
 									dugaan pelanggaran atau tindakan tidak etis yang terjadi di
 									lingkungan PT BPR BANK WONOSOBO (Perseroda). Sistem ini
 									memastikan laporan disampaikan secara aman dan rahasia, baik
