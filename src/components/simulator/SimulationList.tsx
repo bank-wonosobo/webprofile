@@ -7,7 +7,7 @@ const SimulatorList: React.FC = () => {
 		<section className="w-full bg-white mb-8" id="simulator">
 			<div className="mx-auto container py-8 px-4">
 				<h2 className="text-black font-bold text-center text-2xl lg:text-3xl mb-8">
-					Simulasi Kredit & Depoito
+					Simulasi Kredit & Deposito
 				</h2>
 				<div className="w-full flex justify-around items-center flex-col lg:flex-row ">
 					<SimulatorDeposit />
