@@ -4,7 +4,7 @@
 import getLaporanByType from "@/data/tipe-laporan";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { IoIosArrowDown, IoIosArrowUp, IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp, IoIosArrowBack } from "react-icons/io";
 import { MdInstallMobile } from "react-icons/md";
 import { PiHandDepositBold } from "react-icons/pi";
 import { RxCross2 } from "react-icons/rx";
