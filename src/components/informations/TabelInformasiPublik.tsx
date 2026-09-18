@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Table, message, Space } from "antd";
 import { FileTextOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
@@ -61,10 +61,6 @@ export default function TabelInformasiPublik() {
 		}
 	};
 
-	useEffect(() => {
-		fetchDataWithPagination(1, 10);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
 
 	const columns: ColumnsType<InformationData> = [
 		{
