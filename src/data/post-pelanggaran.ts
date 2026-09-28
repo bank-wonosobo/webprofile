@@ -50,5 +50,26 @@ export async function postPelanggaran(values: AduanPayload) {
     throw new Error(error.message || "Gagal mengirim aduan");
   }
 
-  return res.json();
+  const responseData = await res.json();
+
+  // Memanggil API internal Next.js untuk mengirim email
+  try {
+    await fetch("/api/send-wbs-email", {
+      method: "POST",   
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        reported_name: values.reported_name,
+        complaint_type: values.complaint_type,
+        insident_location: values.insident_location,
+        insident_time: values.insident_time,
+        description: values.description,
+      }),
+    });
+  } catch (err) {
+    console.error("Gagal memanggil API email:", err);
+  }
+
+  return responseData;
 }
