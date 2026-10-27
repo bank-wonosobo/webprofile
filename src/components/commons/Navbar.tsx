@@ -239,10 +239,10 @@ const Navbar: React.FC = () => {
               </li>
             </Link>
             <li className="flex justify-between hover:border-b-[3px] border-b-secondary items-center relative">
-              <Dropdown name="Pengaduan">
+              <Dropdown name="Pengaduan" align="right">
                 <Link href={"/pengaduan-nasabah"}>
                   <li className="px-4 py-3 hover:bg-gray-100 cursor-pointer">
-                    Pengaduan Nasabah
+                    Mekanisme Pengaduan Nasabah
                   </li>
                 </Link>
                 <Link href={"/lapor-pelanggaran"}>

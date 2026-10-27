@@ -4,7 +4,7 @@ import SectionLayout from "@/components/app/SectionLayout";
 export default function PengaduanNasabah() {
 	return (
 		<MainLayout>
-			<SectionLayout title="Pengaduan Nasabah">
+			<SectionLayout title="Mekanisme Pengaduan Nasabah">
 				<div className="max-w-4xl mx-auto font-light space-y-6 text-justify leading-relaxed">
 					<h2 className="text-lg font-semibold text-blue-700">
 						Tentang Pengaduan Nasabah
@@ -23,7 +23,7 @@ export default function PengaduanNasabah() {
 								<strong>Datang Langsung:</strong> Nasabah dapat mengunjungi Kantor Pusat atau Kantor Cabang PT BPR BANK WONOSOBO terdekat dan menyampaikan pengaduan secara lisan atau tertulis melalui petugas Customer Service kami.
 							</li>
 							<li>
-								<strong>Melalui Telepon:</strong> Menghubungi layanan Call Center resmi atau nomor telepon Kantor Cabang terkait.
+								<strong>Melalui Telepon:</strong> Menghubungi layanan Call Center resmi di <a href="https://wa.me/62085117690144" target="_blank" rel="noopener noreferrer"><b>&quot;085117690144&quot;</b></a> atau nomor telepon Kantor Cabang terkait.
 							</li>
 							<li>
 								<strong>Melalui Surat atau Email:</strong> Mengirimkan surat pengaduan resmi ke alamat Kantor Pusat atau melalui email resmi pengaduan bank.

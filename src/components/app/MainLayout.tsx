@@ -50,7 +50,9 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 						</li>
 						<li>
 							<a
-								href="#"
+								href="https://wa.me/62085117690144"
+								target="_blank"
+								rel="noopener noreferrer"
 								className="flex items-center justify-between gap-x-1 hover:text-secondary">
 								<TbBrandWhatsappFilled />
 								Bawon Whatsapp
