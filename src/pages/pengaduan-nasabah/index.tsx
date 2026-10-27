@@ -26,7 +26,7 @@ export default function PengaduanNasabah() {
 								<strong>Melalui Telepon:</strong> Menghubungi layanan Call Center resmi di <a href="https://wa.me/62085117690144" target="_blank" rel="noopener noreferrer"><b>&quot;085117690144&quot;</b></a> atau nomor telepon Kantor Cabang terkait.
 							</li>
 							<li>
-								<strong>Melalui Surat atau Email:</strong> Mengirimkan surat pengaduan resmi ke alamat Kantor Pusat atau melalui email resmi pengaduan bank.
+								<strong>Melalui Surat atau Email:</strong> Mengirimkan surat pengaduan resmi ke alamat Kantor Pusat atau melalui email resmi pengaduan bank di <a href="https://mail.google.com/mail/?view=cm&fs=1&to=pengaduan@bankwososobo.co.id&su=Pengaduan Nasabah&body="target="_blank" rel="noopener noreferrer"><b>&quot;pengaduan@bankwososobo.co.id&quot;</b></a>.
 							</li>
 							<li>
 								<strong>Melalui Website (Whistleblowing System):</strong> Jika berkaitan dengan pelanggaran atau tindakan tidak etis, dapat menggunakan layanan Whistleblowing System yang tersedia di website ini.
