@@ -4,9 +4,10 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 interface DropdownProps {
   children: React.ReactNode;
   name: string;
+  align?: "left" | "right";
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ children, name }) => {
+const Dropdown: React.FC<DropdownProps> = ({ children, name, align = "left" }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +40,11 @@ const Dropdown: React.FC<DropdownProps> = ({ children, name }) => {
       </button>
 
       {isOpen && (
-        <div className="absolute font-medium mt-2 min-w-64 bg-white border border-gray-200 rounded-md shadow-md -left-1">
+        <div
+          className={`absolute font-medium mt-2 min-w-64 bg-white border border-gray-200 rounded-md shadow-md ${
+            align === "right" ? "right-0" : "-left-1"
+          }`}
+        >
           <ul className="py-2 text-gray-700">{children}</ul>
         </div>
       )}
